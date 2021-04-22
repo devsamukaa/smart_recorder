@@ -16,7 +16,6 @@ public class TipoHabitacaoEntity implements Serializable {
     private String nmTipoHabitacao;
 
     public TipoHabitacaoEntity(){
-
     }
 
     public TipoHabitacaoEntity(Long cdTipoAtividade, String nmTipoHabitacao) {
