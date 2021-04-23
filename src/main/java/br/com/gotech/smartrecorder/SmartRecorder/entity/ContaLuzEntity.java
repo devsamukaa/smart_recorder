@@ -1,4 +1,4 @@
-package br.com.gotech.smartrecorder.SmartRecorder.Entity;
+package br.com.gotech.smartrecorder.SmartRecorder.entity;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -7,19 +7,20 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+@Entity(name = "tb_conta_luz")
 public class ContaLuzEntity implements Serializable {
 
     @Id
     @Column(name = "cd_conta_luz")
     @SequenceGenerator(name = "conta_luz", sequenceName = "sq_conta_luz", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "conta_luz")
-    private long idContaLuz;
+    private Long idContaLuz;
 
     @Column(name = "qt_kwh_conta", nullable = false)
-    private long kwhConta;
+    private Long kwhConta;
 
     @Column(name = "vl_pagto_conta", nullable = false)
-    private long pagamento;
+    private Long pagamento;
 
     @Column(name = "dt_validade_conta", nullable = false)
     private Date validade;
@@ -27,14 +28,13 @@ public class ContaLuzEntity implements Serializable {
     @Column(name = " dt_registro_conta")
     private Date registro;
 
-    @ManyToOne(optional = false)
-    @Cascade(CascadeType.SAVE_UPDATE)
-    private long cdInstalacao;
+    @Column(name = "cd_instalacao")
+    private Long cdInstalacao;
 
     public ContaLuzEntity() {
     }
 
-    public ContaLuzEntity(long idContaLuz, long kwhConta, long pagamento, Date validade, Date registro, long cdInstalacao) {
+    public ContaLuzEntity(Long idContaLuz, Long kwhConta, Long pagamento, Date validade, Date registro, Long cdInstalacao) {
         this.idContaLuz = idContaLuz;
         this.kwhConta = kwhConta;
         this.pagamento = pagamento;
@@ -43,17 +43,17 @@ public class ContaLuzEntity implements Serializable {
         this.cdInstalacao = cdInstalacao;
     }
 
-    public long getIdContaLuz() { return idContaLuz; }
+    public Long getIdContaLuz() { return idContaLuz; }
 
-    public void setIdContaLuz(long idContaLuz) { this.idContaLuz = idContaLuz; }
+    public void setIdContaLuz(Long idContaLuz) { this.idContaLuz = idContaLuz; }
 
-    public long getKwhConta() { return kwhConta; }
+    public Long getKwhConta() { return kwhConta; }
 
-    public void setKwhConta(long kwhConta) { this.kwhConta = kwhConta; }
+    public void setKwhConta(Long kwhConta) { this.kwhConta = kwhConta; }
 
-    public long getPagamento() { return pagamento; }
+    public Long getPagamento() { return pagamento; }
 
-    public void setPagamento(long pagamento) { this.pagamento = pagamento; }
+    public void setPagamento(Long pagamento) { this.pagamento = pagamento; }
 
     public Date getValidade() { return validade; }
 
@@ -63,7 +63,7 @@ public class ContaLuzEntity implements Serializable {
 
     public void setRegistro(Date registro) { this.registro = registro; }
 
-    public long getCdInstalacao() { return cdInstalacao; }
+    public Long getCdInstalacao() { return cdInstalacao; }
 
-    public void setCdInstalacao(long cdInstalacao) { this.cdInstalacao = cdInstalacao; }
+    public void setCdInstalacao(Long cdInstalacao) { this.cdInstalacao = cdInstalacao; }
 }

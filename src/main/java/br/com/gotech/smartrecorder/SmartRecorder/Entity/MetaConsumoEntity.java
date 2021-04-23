@@ -1,4 +1,4 @@
-package br.com.gotech.smartrecorder.SmartRecorder.Entity;
+package br.com.gotech.smartrecorder.SmartRecorder.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
 
