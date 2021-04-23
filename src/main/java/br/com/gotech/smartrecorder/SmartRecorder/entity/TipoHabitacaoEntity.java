@@ -1,4 +1,4 @@
-package br.com.gotech.smartrecorder.SmartRecorder.Entity;
+package br.com.gotech.smartrecorder.SmartRecorder.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,7 +10,7 @@ public class TipoHabitacaoEntity implements Serializable {
     @Column(name = "cd_tipo_habitacao", nullable = false)
     @SequenceGenerator(name = "tipo_habitacao", sequenceName = "sq_tipo_habitacao", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "tipo_habitacao")
-    private Long cdTipoAtividade;
+    private Long cdTipoHabitacao;
 
     @Column(name = "nm_tipo", nullable = false, length = 100)
     private String nmTipoHabitacao;
@@ -19,14 +19,14 @@ public class TipoHabitacaoEntity implements Serializable {
     }
 
     public TipoHabitacaoEntity(Long cdTipoAtividade, String nmTipoHabitacao) {
-        this.cdTipoAtividade = cdTipoAtividade;
+        this.cdTipoHabitacao = cdTipoAtividade;
         this.nmTipoHabitacao = nmTipoHabitacao;
     }
 
-    public Long getCdTipoAtividade() { return cdTipoAtividade;
+    public Long getCdTipoAtividade() { return cdTipoHabitacao;
     }
 
-    public void setCdTipoAtividade(Long cdTipoAtividade) { this.cdTipoAtividade = cdTipoAtividade;
+    public void setCdTipoAtividade(Long cdTipoAtividade) { this.cdTipoHabitacao = cdTipoAtividade;
     }
 
     public String getNmTipoHabitacao() { return nmTipoHabitacao;

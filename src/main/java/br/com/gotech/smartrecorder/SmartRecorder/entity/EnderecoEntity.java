@@ -1,22 +1,22 @@
-package br.com.gotech.smartrecorder.SmartRecorder.Entity;
+package br.com.gotech.smartrecorder.SmartRecorder.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
+@Entity(name = "tb_endereco")
 public class EnderecoEntity implements Serializable {
 
     @Id
     @Column(name = "cd_endereco", nullable = false)
     @SequenceGenerator(name = "endereco", sequenceName = "sq_endereco", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco")
-    private long idEndereco;
+    private Long idEndereco;
 
     @Column(name = "nm_logradouro", nullable = false, length = 100)
     private String logradouro;
 
     @Column(name = "vl_numero", nullable = false, length = 8)
-    private long numero;
+    private Long numero;
 
     @Column(name = "ds_complemento", nullable = false, length = 100)
     private String complemento;
@@ -34,15 +34,19 @@ public class EnderecoEntity implements Serializable {
     private String cep;
 
     @Column(name = "vl_latitude", nullable = false, length = 9)
-    private long latitude;
+    private Long latitude;
 
     @Column(name = "vl_longitude", nullable = false, length = 9)
-    private long longitude;
+    private Long longitude;
+
+    @OneToOne(mappedBy = "idEndereco")
+    private InstalacaoEntity idInstalacao;
+
 
     public EnderecoEntity() {
     }
 
-    public EnderecoEntity(long idEndereco, String logradouro, long numero, String complemento, String bairro, String cidade, String uf, String cep, long latitude, long longitude) {
+    public EnderecoEntity(Long idEndereco, String logradouro, Long numero, String complemento, String bairro, String cidade, String uf, String cep, Long latitude, Long longitude) {
         this.idEndereco = idEndereco;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -55,10 +59,10 @@ public class EnderecoEntity implements Serializable {
         this.longitude = longitude;
     }
 
-    public long getIdEndereco() { return idEndereco;
+    public Long getIdEndereco() { return idEndereco;
     }
 
-    public void setIdEndereco(long idEndereco) { this.idEndereco = idEndereco;
+    public void setIdEndereco(Long idEndereco) { this.idEndereco = idEndereco;
     }
 
     public String getLogradouro() { return logradouro;
@@ -67,10 +71,10 @@ public class EnderecoEntity implements Serializable {
     public void setLogradouro(String logradouro) { this.logradouro = logradouro;
     }
 
-    public long getNumero() { return numero;
+    public Long getNumero() { return numero;
     }
 
-    public void setNumero(long numero) { this.numero = numero;
+    public void setNumero(Long numero) { this.numero = numero;
     }
 
     public String getComplemento() { return complemento;
@@ -103,15 +107,15 @@ public class EnderecoEntity implements Serializable {
     public void setCep(String cep) { this.cep = cep;
     }
 
-    public long getLatitude() { return latitude;
+    public Long getLatitude() { return latitude;
     }
 
-    public void setLatitude(long latitude) { this.latitude = latitude;
+    public void setLatitude(Long latitude) { this.latitude = latitude;
     }
 
-    public long getLongitude() { return longitude;
+    public Long getLongitude() { return longitude;
     }
 
-    public void setLongitude(long longitude) { this.longitude = longitude;
+    public void setLongitude(Long longitude) { this.longitude = longitude;
     }
 }
