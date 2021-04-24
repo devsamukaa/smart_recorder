@@ -1,4 +1,4 @@
-package br.com.gotech.smartrecorder.SmartRecorder.Repository;
+package br.com.gotech.smartrecorder.SmartRecorder.repository;
 
 import br.com.gotech.smartrecorder.SmartRecorder.entity.PessoaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,6 +9,6 @@ public interface PessoaRepository extends JpaRepository<PessoaEntity, Long> {
 
     List<PessoaEntity> findByCdPessoa(Long cdPessoa);
     List<PessoaEntity> findByNomePessoa(String nomePessoa);
-    List<PessoaEntity> findByCpf(Long cpf);
-    List<PessoaEntity> findByCnpj(Long cnpj);
+    PessoaEntity findByCpf(Long cpf);
+    PessoaEntity findByCnpj(Long cnpj);
 }
