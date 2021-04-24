@@ -18,15 +18,15 @@ public class TipoHabitacaoEntity implements Serializable {
     public TipoHabitacaoEntity(){
     }
 
-    public TipoHabitacaoEntity(Long cdTipoAtividade, String nmTipoHabitacao) {
-        this.cdTipoHabitacao = cdTipoAtividade;
+    public TipoHabitacaoEntity(Long cdTipoHabitacao, String nmTipoHabitacao) {
+        this.cdTipoHabitacao = cdTipoHabitacao;
         this.nmTipoHabitacao = nmTipoHabitacao;
     }
 
-    public Long getCdTipoAtividade() { return cdTipoHabitacao;
+    public Long getCdTipoHabitacao() { return cdTipoHabitacao;
     }
 
-    public void setCdTipoAtividade(Long cdTipoAtividade) { this.cdTipoHabitacao = cdTipoAtividade;
+    public void setCdTipoHabitacao(Long cdTipoHabitacao) { this.cdTipoHabitacao = cdTipoHabitacao;
     }
 
     public String getNmTipoHabitacao() { return nmTipoHabitacao;

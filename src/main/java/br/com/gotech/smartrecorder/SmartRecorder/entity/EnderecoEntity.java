@@ -39,7 +39,7 @@ public class EnderecoEntity implements Serializable {
     @Column(name = "vl_longitude", nullable = false, length = 9)
     private Long longitude;
 
-    @OneToOne(mappedBy = "idEndereco")
+    @OneToOne(mappedBy = "idInstalacao")
     private InstalacaoEntity idInstalacao;
 
 
