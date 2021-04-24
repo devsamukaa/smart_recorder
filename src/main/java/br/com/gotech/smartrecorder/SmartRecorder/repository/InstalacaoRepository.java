@@ -1,9 +1,8 @@
-package br.com.gotech.smartrecorder.SmartRecorder.Repository;
+package br.com.gotech.smartrecorder.SmartRecorder.repository;
 
 import br.com.gotech.smartrecorder.SmartRecorder.entity.EnderecoEntity;
 import br.com.gotech.smartrecorder.SmartRecorder.entity.InstalacaoEntity;
 import br.com.gotech.smartrecorder.SmartRecorder.entity.PessoaEntity;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package br.com.gotech.smartrecorder.SmartRecorder.Repository;
+package br.com.gotech.smartrecorder.SmartRecorder.repository;
 
 import br.com.gotech.smartrecorder.SmartRecorder.entity.ContaLuzEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
