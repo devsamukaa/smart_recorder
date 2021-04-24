@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/pessoa")
 public class PessoaResource {
     @Autowired
     private PessoaRepository pessoaRepository;
@@ -34,12 +36,12 @@ public class PessoaResource {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public PessoaEntity cadastar(@RequestBody PessoaEntity pessoa){
+    public PessoaEntity cadastrar(@RequestBody PessoaEntity pessoa){
         return  pessoaRepository.save(pessoa);
     }
 
     @PutMapping("/{id}")
-    public PessoaEntity autualizar(@RequestBody PessoaEntity pessoa, @PathVariable Long id){
+    public PessoaEntity atualizar(@RequestBody PessoaEntity pessoa, @PathVariable Long id){
         pessoa.setCdPessoa(id);
         return pessoaRepository.save(pessoa);
     }

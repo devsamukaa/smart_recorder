@@ -1,6 +1,6 @@
 package br.com.gotech.smartrecorder.SmartRecorder.controller;
 
-import br.com.gotech.smartrecorder.SmartRecorder.Repository.ContaLuzRepository;
+import br.com.gotech.smartrecorder.SmartRecorder.repository.ContaLuzRepository;
 import br.com.gotech.smartrecorder.SmartRecorder.entity.ContaLuzEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +15,7 @@ public class ContaLuzResource {
     @Autowired
     private ContaLuzRepository contaLuzRepository;
 
+    @GetMapping
     public List<ContaLuzEntity> listar() { return contaLuzRepository.findAll();}
 
     @GetMapping("/{codigo}")

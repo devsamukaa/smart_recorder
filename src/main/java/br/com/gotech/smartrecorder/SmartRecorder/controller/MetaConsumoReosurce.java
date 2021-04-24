@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/meta_consumo")
 public class MetaConsumoReosurce {
     @Autowired
     private MetaConsumoRepository metaConsumoRepository;
@@ -29,7 +31,7 @@ public class MetaConsumoReosurce {
     }
 
     @PutMapping("/{id}")
-    public MetaConsumoEntity autualizar(@RequestBody MetaConsumoEntity metaConsumo, @PathVariable Long id){
+    public MetaConsumoEntity atualizar(@RequestBody MetaConsumoEntity metaConsumo, @PathVariable Long id){
         metaConsumo.setCdMetaConsumo(id);
         return metaConsumoRepository.save(metaConsumo);
     }
