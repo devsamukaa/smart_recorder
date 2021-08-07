@@ -1,0 +1,7 @@
+{
+  "name": "smart_recorder",
+  "description": "Backend da aplicação da nossa solução de Startup para medição em tempo real do consumo de energia e cálculo prévio da conta à pagar.",
+  "repository": "https://github.com/samueltj/smart_recorder",
+  "image": "heroku/java",
+  "addons": [ "heroku-postgresql" ]
+}
