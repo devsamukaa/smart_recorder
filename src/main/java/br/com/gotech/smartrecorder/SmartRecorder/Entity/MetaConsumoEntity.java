@@ -11,8 +11,10 @@ import java.util.Calendar;
 public class MetaConsumoEntity implements Serializable {
     @Id
     @Column(name = "cd_meta_consumo", nullable = false)
-    @SequenceGenerator(name = "cd_meta", sequenceName = "sq_cd_meta", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "cd_meta")
+    /*@SequenceGenerator(name = "cd_meta", sequenceName = "sq_cd_meta", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "cd_meta")*/
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     private Long cdMetaConsumo;
 
     @Column(name = "vl_meta_consumo", nullable = false)
