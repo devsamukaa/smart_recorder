@@ -1,6 +1,8 @@
 package br.com.gotech.smartrecorder.SmartRecorder.entity;
 
+import br.com.gotech.smartrecorder.entity.EnderecoEntity;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;

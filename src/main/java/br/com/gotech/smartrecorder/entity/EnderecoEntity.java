@@ -1,5 +1,7 @@
 package br.com.gotech.smartrecorder.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -45,8 +47,8 @@ public class EnderecoEntity implements Serializable {
     public EnderecoEntity() {
     }
 
-    public EnderecoEntity(Long cdEndereco, String logradouro, Long numero, String complemento, String bairro, String cidade, String uf, String cep, Double latitude, Double longitude) {
-        this.cdEndereco = cdEndereco;
+    public EnderecoEntity(Long idEndereco, String logradouro, Long numero, String complemento, String bairro, String cidade, String uf, String cep, Double latitude, Double longitude) {
+        this.idEndereco = idEndereco;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
@@ -58,10 +60,10 @@ public class EnderecoEntity implements Serializable {
         this.longitude = longitude;
     }
 
-    public Long getCdEndereco() { return cdEndereco;
+    public Long getCdEndereco() { return idEndereco;
     }
 
-    public void setCdEndereco(Long idEndereco) { this.cdEndereco = idEndereco;
+    public void setCdEndereco(Long idEndereco) { this.idEndereco = idEndereco;
     }
 
     public String getLogradouro() { return logradouro;

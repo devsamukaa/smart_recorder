@@ -1,5 +1,9 @@
 package br.com.gotech.smartrecorder.SmartRecorder.entity;
 
+import br.com.gotech.smartrecorder.entity.MetaConsumoEntity;
+import br.com.gotech.smartrecorder.entity.enum_classes.TipoPessoa;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 

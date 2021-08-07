@@ -2,6 +2,7 @@ package br.com.gotech.smartrecorder.SmartRecorder.entity;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
