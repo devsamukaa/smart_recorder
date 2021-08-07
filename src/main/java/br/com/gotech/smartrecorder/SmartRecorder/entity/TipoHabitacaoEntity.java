@@ -1,4 +1,4 @@
-package br.com.gotech.smartrecorder.entity;
+package br.com.gotech.smartrecorder.SmartRecorder.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,25 +15,25 @@ public class TipoHabitacaoEntity implements Serializable {
     private Long cdTipoHabitacao;
 
     @Column(name = "nm_tipo", nullable = false, length = 100)
-    private String nome;
+    private String nmTipoHabitacao;
 
     public TipoHabitacaoEntity(){
     }
 
-    public TipoHabitacaoEntity(Long cdTipoHabitacao, String nmTipoHabitacao) {
-        this.cdTipoHabitacao = cdTipoHabitacao;
-        this.nome = nmTipoHabitacao;
+    public TipoHabitacaoEntity(Long cdTipoAtividade, String nmTipoHabitacao) {
+        this.cdTipoHabitacao = cdTipoAtividade;
+        this.nmTipoHabitacao = nmTipoHabitacao;
     }
 
-    public Long getCdTipoHabitacao() { return cdTipoHabitacao;
+    public Long getCdTipoAtividade() { return cdTipoHabitacao;
     }
 
-    public void setCdTipoHabitacao(Long cdTipoHabitacao) { this.cdTipoHabitacao = cdTipoHabitacao;
+    public void setCdTipoAtividade(Long cdTipoAtividade) { this.cdTipoHabitacao = cdTipoAtividade;
     }
 
-    public String getNome() { return nome;
+    public String getNmTipoHabitacao() { return nmTipoHabitacao;
     }
 
-    public void setNome(String nmTipoHabitacao) { this.nome = nmTipoHabitacao;
+    public void setNmTipoHabitacao(String nmTipoHabitacao) { this.nmTipoHabitacao = nmTipoHabitacao;
     }
 }

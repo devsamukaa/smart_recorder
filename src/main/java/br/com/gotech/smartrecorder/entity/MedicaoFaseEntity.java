@@ -12,8 +12,10 @@ public class MedicaoFaseEntity implements Serializable {
 
     @Id
     @Column(name = "cd_medicao_fase")
-    @SequenceGenerator(name = "medicao_fase",sequenceName = "sq_medicao_fase", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "medicao_fase")
+    /*@SequenceGenerator(name = "medicao_fase",sequenceName = "sq_medicao_fase", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "medicao_fase")*/
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     private Long cdMedicaoFase;
 
     @Column(name = "bl_medicao_com_dispositivo", nullable = false)
