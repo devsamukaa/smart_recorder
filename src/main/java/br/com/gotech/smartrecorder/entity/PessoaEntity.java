@@ -14,8 +14,7 @@ public class PessoaEntity implements Serializable{
     @Column(name = "cd_pessoa", nullable = false)
     /*@SequenceGenerator(name = "cd_pessoa", sequenceName = "sq_cd_pessoa", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "cd_pessoa")*/
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cdPessoa;
 
     @Column(name = "nm_pessoa", nullable = false, length = 100)

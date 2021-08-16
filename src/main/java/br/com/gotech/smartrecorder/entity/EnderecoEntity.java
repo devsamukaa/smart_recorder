@@ -12,8 +12,7 @@ public class EnderecoEntity implements Serializable {
     @Column(name = "cd_endereco", nullable = false)
     /*@SequenceGenerator(name = "endereco", sequenceName = "sq_endereco", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco")*/
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEndereco;
 
     @Column(name = "nm_logradouro", nullable = false, length = 100)

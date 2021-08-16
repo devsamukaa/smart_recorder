@@ -13,8 +13,7 @@ public class InstalacaoEntity implements Serializable {
     @Column(name = "cd_instalacao")
     /*@SequenceGenerator(name = "instalacao",sequenceName = "sq_instalacao",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "instalacao")*/
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cdInstalacao;
 
     @Column(name = "bl_instalacao_ativa",nullable = false)
