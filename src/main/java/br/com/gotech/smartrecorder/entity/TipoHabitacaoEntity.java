@@ -17,7 +17,7 @@ public class TipoHabitacaoEntity implements Serializable {
     @GenericGenerator(name = "increment", strategy = "increment")
     private Long cdTipoHabitacao;
 
-    @Column(name = "nm_tipo", nullable = false, length = 100)
+    @Column(name = "nm_tipo_habitacao", nullable = false, length = 100)
     private String nome;
 
     public TipoHabitacaoEntity(){

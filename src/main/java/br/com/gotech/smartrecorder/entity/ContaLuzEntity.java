@@ -21,10 +21,10 @@ public class ContaLuzEntity implements Serializable {
     @Column(name = "qt_kwh_conta", nullable = false)
     private Double kwhConta;
 
-    @Column(name = "vl_pagto_conta", nullable = false)
+    @Column(name = "vl_pgto_conta", nullable = false)
     private Double valorPago;
 
-    @Column(name = "vl_pagto_tributos", nullable = false)
+    @Column(name = "vl_pgto_tributos", nullable = false)
     private Double valorTributos;
 
     @Column(name = "dt_validade_conta", nullable = false)

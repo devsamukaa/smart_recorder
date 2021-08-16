@@ -76,6 +76,8 @@ public class CalculoConsumoResource {
         }else if(!isMedicaoDispositivo){
 
             MedicaoFaseEntity medicaoFaseEntity = medicaoFaseRepository.getByInstalacao_CdInstalacaoAndIsMedicaoDispositivoOrderByDataMedicaoDesc(cdInstalacao, isMedicaoDispositivo);
+            if(medicaoFaseEntity == null)
+                return consumoEntity;
 
             consumoEntity.setKwh(medicaoFaseEntity.getKwhRelogio() - medicaoFaseEntity.getKwhUltimaConta());
 

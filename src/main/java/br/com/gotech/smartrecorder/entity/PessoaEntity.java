@@ -21,10 +21,10 @@ public class PessoaEntity implements Serializable{
     @Column(name = "nm_pessoa", nullable = false, length = 100)
     private String nome;
 
-    @Column(name = "nr_cpf", length = 15)
+    @Column(name = "vl_cpf", length = 15)
     private String cpf;
 
-    @Column(name = "nr_cnpj", length = 18)
+    @Column(name = "vl_cnpj", length = 18)
     private String cnpj;
 
     @OneToOne
