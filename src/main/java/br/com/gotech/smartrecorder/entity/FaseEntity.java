@@ -13,9 +13,8 @@ public class FaseEntity implements Serializable {
 
     @Id
     @Column(name = "cd_fase",nullable = false)
-    /*@SequenceGenerator(name = "fase",sequenceName = "sq_fase",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "fase")*/
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "fase",sequenceName = "sq_fase",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "fase")
     private Long cdFase;
 
     @Column(name = "nm_fase",nullable = false)

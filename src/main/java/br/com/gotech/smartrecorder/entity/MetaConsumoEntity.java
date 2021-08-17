@@ -12,9 +12,8 @@ import java.util.Date;
 public class MetaConsumoEntity implements Serializable {
     @Id
     @Column(name = "cd_meta_consumo", nullable = false)
-    /*@SequenceGenerator(name = "cd_meta", sequenceName = "sq_cd_meta", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "cd_meta")*/
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "cd_meta", sequenceName = "sq_cd_meta", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "cd_meta")
     private Long cdMetaConsumo;
 
     @Column(name = "vl_meta_consumo", nullable = false)

@@ -11,9 +11,8 @@ public class TipoHabitacaoEntity implements Serializable {
 
     @Id
     @Column(name = "cd_tipo_habitacao", nullable = false)
-    /*@SequenceGenerator(name = "tipo_habitacao", sequenceName = "sq_tipo_habitacao", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "tipo_habitacao")*/
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "tipo_habitacao", sequenceName = "sq_tipo_habitacao", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "tipo_habitacao")
     private Long cdTipoHabitacao;
 
     @Column(name = "nm_tipo_habitacao", nullable = false, length = 100)

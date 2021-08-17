@@ -12,9 +12,8 @@ public class ContaLuzEntity implements Serializable {
 
     @Id
     @Column(name = "cd_conta_luz")
-    /*@SequenceGenerator(name = "conta_luz", sequenceName = "sq_conta_luz", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "conta_luz")*/
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "conta_luz", sequenceName = "sq_conta_luz", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "conta_luz")
     private Long cdContaLuz;
 
     @Column(name = "qt_kwh_conta", nullable = false)

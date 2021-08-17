@@ -12,9 +12,8 @@ import java.io.Serializable;
 public class PessoaEntity implements Serializable{
     @Id
     @Column(name = "cd_pessoa", nullable = false)
-    /*@SequenceGenerator(name = "cd_pessoa", sequenceName = "sq_cd_pessoa", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "cd_pessoa")*/
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "cd_pessoa", sequenceName = "sq_cd_pessoa", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "cd_pessoa")
     private Long cdPessoa;
 
     @Column(name = "nm_pessoa", nullable = false, length = 100)
