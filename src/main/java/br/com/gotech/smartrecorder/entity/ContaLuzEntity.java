@@ -11,7 +11,7 @@ import java.util.Date;
 public class ContaLuzEntity implements Serializable {
 
     @Id
-    @Column(name = "cd_conta_luz")
+    @Column(name = "cd_conta_luz", nullable = false)
     @SequenceGenerator(name = "conta_luz", sequenceName = "sq_conta_luz", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "conta_luz")
     private Long cdContaLuz;

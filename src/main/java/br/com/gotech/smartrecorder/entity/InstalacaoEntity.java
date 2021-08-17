@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class InstalacaoEntity implements Serializable {
 
     @Id
-    @Column(name = "cd_instalacao")
+    @Column(name = "cd_instalacao", nullable = false)
     @SequenceGenerator(name = "instalacao",sequenceName = "sq_instalacao",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "instalacao")
     private Long cdInstalacao;
