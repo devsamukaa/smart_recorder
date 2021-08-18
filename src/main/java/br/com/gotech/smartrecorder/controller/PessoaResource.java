@@ -3,10 +3,12 @@ package br.com.gotech.smartrecorder.controller;
 import br.com.gotech.smartrecorder.entity.PessoaEntity;
 import br.com.gotech.smartrecorder.entity.business.BusinessPessoaAutenticada;
 import br.com.gotech.smartrecorder.repository.PessoaRepository;
+import br.com.gotech.smartrecorder.repository.PessoaRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -15,6 +17,9 @@ import java.util.List;
 public class PessoaResource {
     @Autowired
     private PessoaRepository pessoaRepository;
+
+    @Autowired
+    PessoaRepositoryImpl pessoaRepositoryImpl;
 
     @GetMapping
     public List<PessoaEntity> listar(){
@@ -27,10 +32,15 @@ public class PessoaResource {
     }
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody PessoaEntity pessoaEntity) {
+    public BusinessPessoaAutenticada login(@RequestBody PessoaEntity pessoaEntity) {
 
-        return new ResponseEntity<>(pessoaRepository.findByEmailAndPassword(pessoaEntity.getEmail(), pessoaEntity.getPassword()), HttpStatus.OK);
+        BusinessPessoaAutenticada pessoaAutenticada = pessoaRepositoryImpl.infosByEmailAndPassword(pessoaEntity.getEmail(), pessoaEntity.getPassword());
 
+        if(pessoaAutenticada == null) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Usuário ou senha inválidos");
+        }
+
+        return pessoaAutenticada;
     }
 
     @ResponseStatus(HttpStatus.CREATED)
