@@ -24,11 +24,13 @@ public class PessoaRepositoryImpl {
 
     public BusinessPessoaAutenticada infosByEmailAndPassword(String email, String password) {
 
-        BusinessPessoaAutenticada pessoaAutenticada = new BusinessPessoaAutenticada(pessoaRepository.findByEmailAndPassword(email, password));
+        PessoaEntity pessoa = pessoaRepository.findByEmailAndPassword(email, password);
 
-        if(pessoaAutenticada == null) {
-            return pessoaAutenticada;
+        if(pessoa == null) {
+            return null;
         }
+
+        BusinessPessoaAutenticada pessoaAutenticada = new BusinessPessoaAutenticada(pessoa);
 
         pessoaAutenticada.setInstalacao(
                 instalacaoRepository.getByPessoa_CdPessoa(pessoaAutenticada.getCdPessoa())
