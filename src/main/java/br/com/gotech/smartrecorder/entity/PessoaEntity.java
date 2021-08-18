@@ -34,6 +34,9 @@ public class PessoaEntity implements Serializable{
     @Enumerated(EnumType.STRING)
     private TipoPessoa tipoPessoa;
 
+    @Column(name = "vl_password")
+    private String password;
+
     public PessoaEntity() {
     }
 
@@ -96,5 +99,13 @@ public class PessoaEntity implements Serializable{
 
     public void setTipoPessoa(String tipoPessoa) {
         this.tipoPessoa = tipoPessoa.equals("PJ") ? TipoPessoa.PJ : TipoPessoa.PF;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
