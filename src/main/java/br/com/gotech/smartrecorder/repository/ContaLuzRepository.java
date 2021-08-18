@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ContaLuzRepository extends JpaRepository<ContaLuzEntity, Long> {
 
     ContaLuzEntity getByInstalacao_CdInstalacaoOrderByDataValidadeDesc(Long cdInstalacao);
+
 }

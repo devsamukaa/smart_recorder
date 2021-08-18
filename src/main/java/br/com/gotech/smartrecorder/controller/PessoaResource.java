@@ -1,9 +1,11 @@
 package br.com.gotech.smartrecorder.controller;
 
 import br.com.gotech.smartrecorder.entity.PessoaEntity;
+import br.com.gotech.smartrecorder.entity.business.BusinessPessoaAutenticada;
 import br.com.gotech.smartrecorder.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +24,13 @@ public class PessoaResource {
     @GetMapping("/{codigo}")
     public PessoaEntity buscar(@PathVariable Long codigo){
         return pessoaRepository.findById(codigo).get();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody PessoaEntity pessoaEntity) {
+
+        return new ResponseEntity<>(pessoaRepository.findByEmailAndPassword(pessoaEntity.getEmail(), pessoaEntity.getPassword()), HttpStatus.OK);
+
     }
 
     @ResponseStatus(HttpStatus.CREATED)

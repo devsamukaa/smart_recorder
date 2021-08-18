@@ -1,6 +1,6 @@
 package br.com.gotech.smartrecorder.controller;
 
-import br.com.gotech.smartrecorder.entity.ConsumoEntity;
+import br.com.gotech.smartrecorder.entity.business.BusinessConsumo;
 import br.com.gotech.smartrecorder.entity.ContaLuzEntity;
 import br.com.gotech.smartrecorder.entity.MedicaoFaseEntity;
 import br.com.gotech.smartrecorder.helper.DateHelper;
@@ -24,9 +24,9 @@ public class CalculoConsumoResource {
     private MedicaoFaseRepository medicaoFaseRepository;
 
     @GetMapping("/mensal")
-    public ConsumoEntity calculoConsumoMensal(@RequestParam int mes, @RequestParam int ano, @RequestParam Long cdInstalacao, @RequestParam boolean isMedicaoDispositivo) {
+    public BusinessConsumo calculoConsumoMensal(@RequestParam int mes, @RequestParam int ano, @RequestParam Long cdInstalacao, @RequestParam boolean isMedicaoDispositivo) {
 
-        ConsumoEntity consumoEntity = new ConsumoEntity(0.00,0.00);
+        BusinessConsumo businessConsumo = new BusinessConsumo(0.00,0.00);
         ContaLuzEntity contaLuzEntity = contaLuzRepository.getByInstalacao_CdInstalacaoOrderByDataValidadeDesc(cdInstalacao);
 
         mes = mes == 0 ? 1 : mes;
@@ -62,13 +62,13 @@ public class CalculoConsumoResource {
                             diaMedido = medicaoFase.getDataMedicao().getDay();
                         }
 
-                        consumoEntity.setKwh(this.IncrementaKwh(consumoEntity.getKwh(), medicaoFase.getKwh()));
+                        businessConsumo.setKwh(this.IncrementaKwh(businessConsumo.getKwh(), medicaoFase.getKwh()));
 
                     }
 
                 }
 
-                consumoEntity.setCusto(this.calculaCustoEnergia(consumoEntity.getKwh(), cdInstalacao, diasMedidos));
+                businessConsumo.setCusto(this.calculaCustoEnergia(businessConsumo.getKwh(), cdInstalacao, diasMedidos));
 
             }catch (Exception e){
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Os parâmetros não foram passados adequadamente");
@@ -77,9 +77,9 @@ public class CalculoConsumoResource {
 
             MedicaoFaseEntity medicaoFaseEntity = medicaoFaseRepository.getByInstalacao_CdInstalacaoAndIsMedicaoDispositivoOrderByDataMedicaoDesc(cdInstalacao, isMedicaoDispositivo);
             if(medicaoFaseEntity == null)
-                return consumoEntity;
+                return businessConsumo;
 
-            consumoEntity.setKwh(medicaoFaseEntity.getKwhRelogio() - medicaoFaseEntity.getKwhUltimaConta());
+            businessConsumo.setKwh(medicaoFaseEntity.getKwhRelogio() - medicaoFaseEntity.getKwhUltimaConta());
 
             Calendar data = new GregorianCalendar(ano, mesAnterior, contaLuzEntity.getDataValidade().getDate());
             data.add(Calendar.DAY_OF_YEAR, -7);
@@ -96,11 +96,11 @@ public class CalculoConsumoResource {
                 diasMedidos = medicaoFaseEntity.getDataMedicao().getDate() - data.getTime().getDate();
             }
 
-            consumoEntity.setCusto(this.calculaCustoEnergia(consumoEntity.getKwh(), cdInstalacao, diasMedidos));
+            businessConsumo.setCusto(this.calculaCustoEnergia(businessConsumo.getKwh(), cdInstalacao, diasMedidos));
 
         }
 
-        return  consumoEntity;
+        return businessConsumo;
 
     }
 

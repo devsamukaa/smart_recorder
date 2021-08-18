@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface InstalacaoRepository extends JpaRepository<InstalacaoEntity, Long> {
 
-
+    InstalacaoEntity getByPessoa_CdPessoa(Long cdPessoa);
 
 }

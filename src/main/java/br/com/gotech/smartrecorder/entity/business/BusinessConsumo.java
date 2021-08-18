@@ -1,16 +1,16 @@
-package br.com.gotech.smartrecorder.entity;
+package br.com.gotech.smartrecorder.entity.business;
 
 import java.io.Serializable;
 
-public class ConsumoEntity implements Serializable {
+public class BusinessConsumo implements Serializable {
 
     private Double kwh;
     private Double custo;
 
-    public ConsumoEntity() {
+    public BusinessConsumo() {
     }
 
-    public ConsumoEntity(Double kwh, Double custo) {
+    public BusinessConsumo(Double kwh, Double custo) {
         this.kwh = kwh;
         this.custo = custo;
     }

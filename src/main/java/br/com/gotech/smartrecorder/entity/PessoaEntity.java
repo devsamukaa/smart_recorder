@@ -19,6 +19,9 @@ public class PessoaEntity implements Serializable{
     @Column(name = "nm_pessoa", nullable = false, length = 100)
     private String nome;
 
+    @Column(name = "vl_email")
+    private String email;
+
     @Column(name = "vl_cpf", length = 15)
     private String cpf;
 
@@ -40,13 +43,26 @@ public class PessoaEntity implements Serializable{
     public PessoaEntity() {
     }
 
-    public PessoaEntity(Long cdPessoa, String nome, String cpf, String cnpj, MetaConsumoEntity metaConsumo, TipoPessoa tipoPessoa) {
+    public PessoaEntity(Long cdPessoa, String nome, String cpf, String cnpj, MetaConsumoEntity metaConsumo, TipoPessoa tipoPessoa, String email, String password) {
         this.cdPessoa = cdPessoa;
         this.nome = nome;
         this.cpf = cpf;
         this.cnpj = cnpj;
         this.metaConsumo = metaConsumo;
         this.tipoPessoa = tipoPessoa;
+        this.email = email;
+        this.password = password;
+    }
+
+    public PessoaEntity(PessoaEntity pessoaEntity) {
+        this.cdPessoa = pessoaEntity.cdPessoa;
+        this.nome = pessoaEntity.nome;
+        this.cpf = pessoaEntity.cpf;
+        this.cnpj = pessoaEntity.cnpj;
+        this.metaConsumo = pessoaEntity.metaConsumo;
+        this.tipoPessoa = pessoaEntity.tipoPessoa;
+        this.email = pessoaEntity.email;
+        this.password = pessoaEntity.password;
     }
 
     public Long getCdPessoa() {
@@ -107,5 +123,13 @@ public class PessoaEntity implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
