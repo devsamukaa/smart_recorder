@@ -27,18 +27,20 @@ public class PessoaRepositoryImpl {
         BusinessPessoaAutenticada pessoaAutenticada = new BusinessPessoaAutenticada(pessoaRepository.findByEmailAndPassword(email, password));
 
         if(pessoaAutenticada == null) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Usuário ou senha inválidos");
+            return pessoaAutenticada;
         }
 
         pessoaAutenticada.setInstalacao(
                 instalacaoRepository.getByPessoa_CdPessoa(pessoaAutenticada.getCdPessoa())
         );
 
-        pessoaAutenticada.setContaLuz(
-                contaLuzRepository.getByInstalacao_CdInstalacaoOrderByDataValidadeDesc(
-                        pessoaAutenticada.getInstalacao().getCdInstalacao()
-                )
-        );
+        if(pessoaAutenticada.getInstalacao() != null){
+            pessoaAutenticada.setContaLuz(
+                    contaLuzRepository.getByInstalacao_CdInstalacaoOrderByDataValidadeDesc(
+                            pessoaAutenticada.getInstalacao().getCdInstalacao()
+                    )
+            );
+        }
 
         return pessoaAutenticada;
     }
