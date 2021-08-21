@@ -17,6 +17,8 @@ import java.util.List;
 public class PessoaResource {
     @Autowired
     private PessoaRepository pessoaRepository;
+
+    @Autowired
     PessoaRepositoryImpl pessoaRepositoryImpl;
 
     @GetMapping
