@@ -40,10 +40,15 @@ public class PessoaEntity implements Serializable{
     @Column(name = "vl_password")
     private String password;
 
+    @ManyToOne
+    @JoinColumn(name="cd_plano")
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    private PlanoEntity plano;
+
     public PessoaEntity() {
     }
 
-    public PessoaEntity(Long cdPessoa, String nome, String cpf, String cnpj, MetaConsumoEntity metaConsumo, TipoPessoa tipoPessoa, String email, String password) {
+    public PessoaEntity(Long cdPessoa, String nome, String cpf, String cnpj, MetaConsumoEntity metaConsumo, TipoPessoa tipoPessoa, String email, String password, PlanoEntity plano) {
         this.cdPessoa = cdPessoa;
         this.nome = nome;
         this.cpf = cpf;
@@ -52,6 +57,7 @@ public class PessoaEntity implements Serializable{
         this.tipoPessoa = tipoPessoa;
         this.email = email;
         this.password = password;
+        this.plano = plano;
     }
 
     public PessoaEntity(PessoaEntity pessoaEntity) {
@@ -63,6 +69,7 @@ public class PessoaEntity implements Serializable{
         this.tipoPessoa = pessoaEntity.tipoPessoa;
         this.email = pessoaEntity.email;
         this.password = pessoaEntity.password;
+        this.plano = pessoaEntity.plano;
     }
 
     public Long getCdPessoa() {
@@ -131,5 +138,13 @@ public class PessoaEntity implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public PlanoEntity getPlano() {
+        return plano;
+    }
+
+    public void setPlano(PlanoEntity plano) {
+        this.plano = plano;
     }
 }
