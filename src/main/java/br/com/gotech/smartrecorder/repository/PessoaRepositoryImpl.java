@@ -22,6 +22,9 @@ public class PessoaRepositoryImpl {
     @Autowired
     private InstalacaoRepository instalacaoRepository;
 
+    @Autowired
+    private FaseRepository faseRepository;
+
     public BusinessPessoaAutenticada infosByEmailAndPassword(String email, String password) {
 
         PessoaEntity pessoa = pessoaRepository.findByEmailAndPassword(email, password);
@@ -41,6 +44,12 @@ public class PessoaRepositoryImpl {
                     contaLuzRepository.getByInstalacao_CdInstalacaoOrderByDataValidadeDesc(
                             pessoaAutenticada.getInstalacao().getCdInstalacao()
                     )
+            );
+
+            pessoaAutenticada.setFases(
+                faseRepository.findByInstalacaoCdInstalacao(
+                    pessoaAutenticada.getInstalacao().getCdInstalacao()
+                )
             );
         }
 

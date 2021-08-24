@@ -94,19 +94,16 @@ public class CalculoConsumoResource {
 
                 businessConsumo.setKwh(medicaoFaseEntity.getKwhRelogio() - medicaoFaseEntity.getKwhUltimaConta());
 
-                Calendar data = new GregorianCalendar(ano, mesAnterior, contaLuzEntity.getDataValidade().getDate());
-                data.add(Calendar.DAY_OF_YEAR, -7);
+                Calendar dataMedicaoEletropaulo = new GregorianCalendar(ano, mesAnterior, contaLuzEntity.getDataValidade().getDate());
+                int diasNoMesMedicaoEletropaulo = dataMedicaoEletropaulo.getActualMaximum(Calendar.DAY_OF_MONTH);
+                dataMedicaoEletropaulo.add(Calendar.DAY_OF_YEAR, -7);
 
-                Calendar data2 = new GregorianCalendar(ano, mesAnterior, contaLuzEntity.getDataValidade().getDate());
+                if (medicaoFaseEntity.getDataMedicao().getDate() < dataMedicaoEletropaulo.getTime().getDate()) {
 
-                if (medicaoFaseEntity.getDataMedicao().getDate() < data.getTime().getDate()) {
-
-                    int daysInMonth = data2.getActualMaximum(Calendar.DAY_OF_MONTH);
-
-                    diasMedidos = medicaoFaseEntity.getDataMedicao().getDate() + daysInMonth - data.getTime().getDate();
+                    diasMedidos = medicaoFaseEntity.getDataMedicao().getDate() + diasNoMesMedicaoEletropaulo - dataMedicaoEletropaulo.getTime().getDate();
 
                 } else {
-                    diasMedidos = medicaoFaseEntity.getDataMedicao().getDate() - data.getTime().getDate();
+                    diasMedidos = medicaoFaseEntity.getDataMedicao().getDate() - dataMedicaoEletropaulo.getTime().getDate();
                 }
 
                 businessConsumo.setCusto(this.calculaCustoEnergia(businessConsumo.getKwh(), cdInstalacao, diasMedidos));
