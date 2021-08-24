@@ -84,7 +84,7 @@ public class CalculoConsumoResource {
                 dataInicioMedicao.getTime(),
                 dataTerminoMedicao.getTime(),
                 cdInstalacao,
-                !isMedicaoDispositivo
+                isMedicaoDispositivo
             );
 
             if(listMedicaoFaseEntity.size() > 0) {
