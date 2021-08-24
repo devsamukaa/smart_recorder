@@ -10,7 +10,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity(name = "tb_fase")
-@JsonIgnoreProperties("instalacao")
 public class FaseEntity implements Serializable {
 
     @Id
@@ -29,6 +28,7 @@ public class FaseEntity implements Serializable {
     @ManyToOne(optional = false)
     @JoinColumn(name="cd_instalacao")
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JsonIgnore
     private InstalacaoEntity instalacao;
 
     public FaseEntity() {

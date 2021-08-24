@@ -1,5 +1,6 @@
 package br.com.gotech.smartrecorder.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 import org.hibernate.annotations.Cascade;
@@ -9,7 +10,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity(name = "tb_instalacao")
-@JsonIgnoreProperties("pessoa")
 public class InstalacaoEntity implements Serializable {
 
     @Id
@@ -33,6 +33,7 @@ public class InstalacaoEntity implements Serializable {
     @ManyToOne(optional = false)
     @JoinColumn(name="cd_pessoa")
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JsonIgnore
     private PessoaEntity pessoa;
 
     @Transient
