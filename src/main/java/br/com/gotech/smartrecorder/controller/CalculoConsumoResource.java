@@ -33,10 +33,11 @@ public class CalculoConsumoResource {
         int mesAnterior = mes == 0 ? 12 : mes - 1;
         int diasMedidos = 0;
 
+        Calendar dataInicioMedicao = Calendar.getInstance();
+        Calendar dataTerminoMedicao = Calendar.getInstance();
+
         if(isMedicaoDispositivo){
             try{
-                Calendar dataInicioMedicao = Calendar.getInstance();
-                Calendar dataTerminoMedicao = Calendar.getInstance();
 
                 dataInicioMedicao.setTime(DateHelper.parseDate(contaLuzEntity.getDataValidade().getDate()+"/"+mesAnterior+"/"+ano));
                 dataTerminoMedicao.setTime(DateHelper.parseDate(contaLuzEntity.getDataValidade().getDate()+"/"+mes+"/"+ano));
@@ -75,7 +76,16 @@ public class CalculoConsumoResource {
             }
         }else if(!isMedicaoDispositivo){
 
-            List<MedicaoFaseEntity> listMedicaoFaseEntity = medicaoFaseRepository.getByInstalacao_CdInstalacaoAndIsMedicaoDispositivoOrderByDataMedicaoDesc(cdInstalacao, isMedicaoDispositivo);
+            dataInicioMedicao.setTime(DateHelper.parseDate("01/"+mes+"/"+ano));
+            int lastDayOfMonth = dataInicioMedicao.getActualMaximum(Calendar.DAY_OF_MONTH);
+            dataTerminoMedicao.setTime(DateHelper.parseDate(lastDayOfMonth+"/"+mes+"/"+ano));
+
+            List<MedicaoFaseEntity> listMedicaoFaseEntity = medicaoFaseRepository.findByDataMedicaoBetweenAndInstalacao_CdInstalacaoAndIsMedicaoDispositivoOrderByDataMedicaoAsc(
+                dataInicioMedicao.getTime(),
+                dataTerminoMedicao.getTime(),
+                cdInstalacao,
+                !isMedicaoDispositivo
+            );
 
             if(listMedicaoFaseEntity.size() > 0) {
                 MedicaoFaseEntity medicaoFaseEntity = listMedicaoFaseEntity.get(0);
