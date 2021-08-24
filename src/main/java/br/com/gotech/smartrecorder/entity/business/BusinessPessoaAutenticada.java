@@ -1,7 +1,6 @@
 package br.com.gotech.smartrecorder.entity.business;
 
 import br.com.gotech.smartrecorder.entity.ContaLuzEntity;
-import br.com.gotech.smartrecorder.entity.EnderecoEntity;
 import br.com.gotech.smartrecorder.entity.FaseEntity;
 import br.com.gotech.smartrecorder.entity.InstalacaoEntity;
 import br.com.gotech.smartrecorder.entity.PessoaEntity;
