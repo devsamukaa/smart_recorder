@@ -2,6 +2,7 @@ package br.com.gotech.smartrecorder.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
@@ -65,6 +66,8 @@ public class InstalacaoEntity implements Serializable {
 
     public void setTipoHabitacao(TipoHabitacaoEntity cdTipoHabitacao) { this.tipoHabitacao = cdTipoHabitacao; }
 
+    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public PessoaEntity getPessoa() { return pessoa; }
 
     public void setPessoa(PessoaEntity cdPessoa) { this.pessoa = cdPessoa; }

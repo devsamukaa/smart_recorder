@@ -2,6 +2,7 @@ package br.com.gotech.smartrecorder.entity;
 
 import br.com.gotech.smartrecorder.helper.DateHelper;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -81,6 +82,8 @@ public class ContaLuzEntity implements Serializable {
 
     public void setDataRegistro(String dataRegistro) { this.dataRegistro = DateHelper.parseDate(dataRegistro); }
 
+    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public InstalacaoEntity getInstalacao() { return instalacao; }
 
     public void setInstalacao(InstalacaoEntity cdInstalacao) { this.instalacao = cdInstalacao; }
