@@ -57,8 +57,6 @@ public class FaseEntity implements Serializable {
         this.identificadorFase = idt.equals("NEUTRO") ? IdentificadorFase.NEUTRO : IdentificadorFase.FASE;
     }
 
-    @JsonIgnore
-    @JsonProperty(value = "instalacao")
     public InstalacaoEntity getInstalacao() {
         return instalacao;
     }

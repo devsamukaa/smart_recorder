@@ -1,5 +1,6 @@
 package br.com.gotech.smartrecorder.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
@@ -8,6 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity(name = "tb_instalacao")
+@JsonIgnoreProperties("pessoa")
 public class InstalacaoEntity implements Serializable {
 
     @Id
