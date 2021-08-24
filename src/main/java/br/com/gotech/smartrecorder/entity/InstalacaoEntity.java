@@ -65,7 +65,6 @@ public class InstalacaoEntity implements Serializable {
 
     public void setTipoHabitacao(TipoHabitacaoEntity cdTipoHabitacao) { this.tipoHabitacao = cdTipoHabitacao; }
 
-    @JsonIgnore
     public PessoaEntity getPessoa() { return pessoa; }
 
     public void setPessoa(PessoaEntity cdPessoa) { this.pessoa = cdPessoa; }

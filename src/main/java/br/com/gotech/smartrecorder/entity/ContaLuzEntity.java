@@ -81,7 +81,6 @@ public class ContaLuzEntity implements Serializable {
 
     public void setDataRegistro(String dataRegistro) { this.dataRegistro = DateHelper.parseDate(dataRegistro); }
 
-    @JsonIgnore
     public InstalacaoEntity getInstalacao() { return instalacao; }
 
     public void setInstalacao(InstalacaoEntity cdInstalacao) { this.instalacao = cdInstalacao; }
