@@ -1,16 +1,16 @@
 package br.com.gotech.smartrecorder.entity;
 
 import br.com.gotech.smartrecorder.entity.enum_classes.IdentificadorFase;
-import br.com.gotech.smartrecorder.entity.enum_classes.TipoPessoa;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity(name = "tb_fase")
+@JsonIgnoreProperties("instalacao")
 public class FaseEntity implements Serializable {
 
     @Id
