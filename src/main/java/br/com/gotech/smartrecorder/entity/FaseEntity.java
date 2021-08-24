@@ -25,11 +25,11 @@ public class FaseEntity implements Serializable {
     @Enumerated(EnumType.STRING)
     private IdentificadorFase identificadorFase;
 
-    @JsonIgnore
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne(optional = false)
     @JoinColumn(name="cd_instalacao")
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private InstalacaoEntity instalacao;
 
     public FaseEntity() {
