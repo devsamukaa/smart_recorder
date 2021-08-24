@@ -75,31 +75,35 @@ public class CalculoConsumoResource {
             }
         }else if(!isMedicaoDispositivo){
 
-            MedicaoFaseEntity medicaoFaseEntity = medicaoFaseRepository.getByInstalacao_CdInstalacaoAndIsMedicaoDispositivoOrderByDataMedicaoDesc(cdInstalacao, isMedicaoDispositivo);
-            if(medicaoFaseEntity == null)
-                return businessConsumo;
+            List<MedicaoFaseEntity> listMedicaoFaseEntity = medicaoFaseRepository.getByInstalacao_CdInstalacaoAndIsMedicaoDispositivoOrderByDataMedicaoDesc(cdInstalacao, isMedicaoDispositivo);
 
-            businessConsumo.setKwh(medicaoFaseEntity.getKwhRelogio() - medicaoFaseEntity.getKwhUltimaConta());
+            if(listMedicaoFaseEntity.size() > 0) {
+                MedicaoFaseEntity medicaoFaseEntity = listMedicaoFaseEntity.get(0);
+                if (medicaoFaseEntity == null)
+                    return businessConsumo;
 
-            Calendar data = new GregorianCalendar(ano, mesAnterior, contaLuzEntity.getDataValidade().getDate());
-            data.add(Calendar.DAY_OF_YEAR, -7);
+                businessConsumo.setKwh(medicaoFaseEntity.getKwhRelogio() - medicaoFaseEntity.getKwhUltimaConta());
 
-            Calendar data2 = new GregorianCalendar(ano, mesAnterior, contaLuzEntity.getDataValidade().getDate());
+                Calendar data = new GregorianCalendar(ano, mesAnterior, contaLuzEntity.getDataValidade().getDate());
+                data.add(Calendar.DAY_OF_YEAR, -7);
 
-            if(medicaoFaseEntity.getDataMedicao().getDate() < data.getTime().getDate()) {
+                Calendar data2 = new GregorianCalendar(ano, mesAnterior, contaLuzEntity.getDataValidade().getDate());
 
-                int daysInMonth = data2.getActualMaximum(Calendar.DAY_OF_MONTH);
+                if (medicaoFaseEntity.getDataMedicao().getDate() < data.getTime().getDate()) {
 
-                diasMedidos = medicaoFaseEntity.getDataMedicao().getDate() + daysInMonth - data.getTime().getDate();
+                    int daysInMonth = data2.getActualMaximum(Calendar.DAY_OF_MONTH);
 
+                    diasMedidos = medicaoFaseEntity.getDataMedicao().getDate() + daysInMonth - data.getTime().getDate();
+
+                } else {
+                    diasMedidos = medicaoFaseEntity.getDataMedicao().getDate() - data.getTime().getDate();
+                }
+
+                businessConsumo.setCusto(this.calculaCustoEnergia(businessConsumo.getKwh(), cdInstalacao, diasMedidos));
             }else{
-                diasMedidos = medicaoFaseEntity.getDataMedicao().getDate() - data.getTime().getDate();
+                return businessConsumo;
             }
-
-            businessConsumo.setCusto(this.calculaCustoEnergia(businessConsumo.getKwh(), cdInstalacao, diasMedidos));
-
         }
-
         return businessConsumo;
 
     }
