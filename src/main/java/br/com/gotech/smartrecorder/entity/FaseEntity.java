@@ -28,8 +28,6 @@ public class FaseEntity implements Serializable {
     @ManyToOne(optional = false)
     @JoinColumn(name="cd_instalacao")
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JsonIgnore
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private InstalacaoEntity instalacao;
 
     public FaseEntity() {
@@ -58,6 +56,8 @@ public class FaseEntity implements Serializable {
         this.identificadorFase = idt.equals("NEUTRO") ? IdentificadorFase.NEUTRO : IdentificadorFase.FASE;
     }
 
+    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public InstalacaoEntity getInstalacao() {
         return instalacao;
     }
