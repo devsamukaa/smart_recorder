@@ -45,6 +45,12 @@ public class PessoaRepositoryImpl {
                             pessoaAutenticada.getInstalacao().getCdInstalacao()
                     )
             );
+
+            pessoaAutenticada.getInstalacao().setFases(
+                faseRepository.findByInstalacaoCdInstalacao(
+                    pessoaAutenticada.getInstalacao().getCdInstalacao()
+                )
+            );
         }
 
         return pessoaAutenticada;

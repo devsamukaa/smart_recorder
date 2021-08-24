@@ -1,6 +1,7 @@
 package br.com.gotech.smartrecorder.entity;
 
 import br.com.gotech.smartrecorder.helper.DateHelper;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -33,6 +34,7 @@ public class ContaLuzEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="cd_instalacao")
+    @JsonIgnore
     private InstalacaoEntity instalacao;
 
     public ContaLuzEntity() {
