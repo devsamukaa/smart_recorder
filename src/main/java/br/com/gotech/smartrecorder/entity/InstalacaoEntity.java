@@ -33,7 +33,6 @@ public class InstalacaoEntity implements Serializable {
     @ManyToOne(optional = false)
     @JoinColumn(name="cd_pessoa")
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JsonIgnore
     private PessoaEntity pessoa;
 
     @Transient
@@ -66,6 +65,7 @@ public class InstalacaoEntity implements Serializable {
 
     public void setTipoHabitacao(TipoHabitacaoEntity cdTipoHabitacao) { this.tipoHabitacao = cdTipoHabitacao; }
 
+    @JsonIgnore
     public PessoaEntity getPessoa() { return pessoa; }
 
     public void setPessoa(PessoaEntity cdPessoa) { this.pessoa = cdPessoa; }
