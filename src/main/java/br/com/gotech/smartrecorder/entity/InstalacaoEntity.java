@@ -33,11 +33,7 @@ public class InstalacaoEntity implements Serializable {
     @ManyToOne(optional = false)
     @JoinColumn(name="cd_pessoa")
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JsonIgnore
     private PessoaEntity pessoa;
-
-    @Transient
-    private List<FaseEntity> fases;
 
     public InstalacaoEntity() {
     }
@@ -70,11 +66,4 @@ public class InstalacaoEntity implements Serializable {
 
     public void setPessoa(PessoaEntity cdPessoa) { this.pessoa = cdPessoa; }
 
-    public List<FaseEntity> getFases() {
-        return fases;
-    }
-
-    public void setFases(List<FaseEntity> fases) {
-        this.fases = fases;
-    }
 }
