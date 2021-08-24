@@ -1,5 +1,6 @@
 package br.com.gotech.smartrecorder.entity;
 
+import java.util.List;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -32,6 +33,9 @@ public class InstalacaoEntity implements Serializable {
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private PessoaEntity pessoa;
 
+    @Transient
+    private List<FaseEntity> fases;
+
     public InstalacaoEntity() {
     }
 
@@ -62,4 +66,12 @@ public class InstalacaoEntity implements Serializable {
     public PessoaEntity getPessoa() { return pessoa; }
 
     public void setPessoa(PessoaEntity cdPessoa) { this.pessoa = cdPessoa; }
+
+    public List<FaseEntity> getFases() {
+        return fases;
+    }
+
+    public void setFases(List<FaseEntity> fases) {
+        this.fases = fases;
+    }
 }

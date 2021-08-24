@@ -46,7 +46,7 @@ public class PessoaRepositoryImpl {
                     )
             );
 
-            pessoaAutenticada.setFases(
+            pessoaAutenticada.getInstalacao().setFases(
                 faseRepository.findByInstalacaoCdInstalacao(
                     pessoaAutenticada.getInstalacao().getCdInstalacao()
                 )

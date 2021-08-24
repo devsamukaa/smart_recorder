@@ -10,7 +10,6 @@ public class BusinessPessoaAutenticada extends PessoaEntity {
 
     private ContaLuzEntity contaLuz;
     private InstalacaoEntity instalacao;
-    private List<FaseEntity> fases;
 
     public BusinessPessoaAutenticada(PessoaEntity pessoa) {
         super(pessoa);
@@ -32,11 +31,4 @@ public class BusinessPessoaAutenticada extends PessoaEntity {
         this.instalacao = instalacao;
     }
 
-    public List<FaseEntity> getFases() {
-        return fases;
-    }
-
-    public void setFases(List<FaseEntity> fases) {
-        this.fases = fases;
-    }
 }
