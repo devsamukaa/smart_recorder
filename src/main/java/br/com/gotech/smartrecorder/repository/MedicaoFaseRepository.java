@@ -9,5 +9,6 @@ public interface MedicaoFaseRepository extends JpaRepository<MedicaoFaseEntity, 
 
     List<MedicaoFaseEntity> findByDataMedicaoBetweenAndInstalacao_CdInstalacaoAndIsMedicaoDispositivoOrderByDataMedicaoAsc(Date dataDepoisDe, Date dataAntesDe, Long cdInstalacao, boolean isMedicaoDispositivo);
 
-    List<MedicaoFaseEntity> getByInstalacao_CdInstalacaoAndIsMedicaoDispositivoOrderByDataMedicaoDesc(Long cdInstalacao, boolean isMedicaoDispositivo);
+    List<MedicaoFaseEntity> findByDataMedicaoBetweenAndInstalacao_CdInstalacaoAndIsMedicaoDispositivoOrderByDataMedicaoDesc(Date dataDepoisDe, Date dataAntesDe, Long cdInstalacao, boolean isMedicaoDispositivo);
+
 }

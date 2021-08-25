@@ -80,7 +80,7 @@ public class CalculoConsumoResource {
             int lastDayOfMonth = dataInicioMedicao.getActualMaximum(Calendar.DAY_OF_MONTH);
             dataTerminoMedicao.setTime(DateHelper.parseDate(lastDayOfMonth+"/"+mes+"/"+ano));
 
-            List<MedicaoFaseEntity> listMedicaoFaseEntity = medicaoFaseRepository.findByDataMedicaoBetweenAndInstalacao_CdInstalacaoAndIsMedicaoDispositivoOrderByDataMedicaoAsc(
+            List<MedicaoFaseEntity> listMedicaoFaseEntity = medicaoFaseRepository.findByDataMedicaoBetweenAndInstalacao_CdInstalacaoAndIsMedicaoDispositivoOrderByDataMedicaoDesc(
                 dataInicioMedicao.getTime(),
                 dataTerminoMedicao.getTime(),
                 cdInstalacao,
