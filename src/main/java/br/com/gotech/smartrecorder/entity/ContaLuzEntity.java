@@ -27,10 +27,13 @@ public class ContaLuzEntity implements Serializable {
     @Column(name = "vl_pgto_tributos", nullable = false)
     private Double valorTributos;
 
+    @Column(name = "vl_cip")
+    private Double valorCip;
+
     @Column(name = "dt_validade_conta", nullable = false)
     private Date dataValidade;
 
-    @Column(name = " dt_registro_conta")
+    @Column(name = "dt_registro_conta")
     private Date dataRegistro;
 
     @ManyToOne
@@ -40,11 +43,12 @@ public class ContaLuzEntity implements Serializable {
     public ContaLuzEntity() {
     }
 
-    public ContaLuzEntity(Long cdContaLuz, Double kwhConta, Double valorPago, Double valorTributos, Date dataValidade, Date dataRegistro, InstalacaoEntity instalacao) {
+    public ContaLuzEntity(Long cdContaLuz, Double kwhConta, Double valorPago, Double valorTributos, Double valorCip, Date dataValidade, Date dataRegistro, InstalacaoEntity instalacao) {
         this.cdContaLuz = cdContaLuz;
         this.kwhConta = kwhConta;
         this.valorPago = valorPago;
         this.valorTributos = valorTributos;
+        this.valorCip = valorCip;
         this.dataValidade = dataValidade;
         this.dataRegistro = dataRegistro;
         this.instalacao = instalacao;
@@ -68,6 +72,14 @@ public class ContaLuzEntity implements Serializable {
 
     public void setValorTributos(Double valorTributos) {
         this.valorTributos = valorTributos;
+    }
+
+    public Double getValorCip() {
+        return valorCip;
+    }
+
+    public void setValorCip(Double valorCip) {
+        this.valorCip = valorCip;
     }
 
     public Date getDataValidade() { return dataValidade; }
