@@ -43,6 +43,14 @@ public class PessoaResource {
         return pessoaAutenticada;
     }
 
+    @PostMapping("/cadastrar")
+    public BusinessPessoaAutenticada cadastrarApp(@RequestBody PessoaEntity pessoaEntity) {
+
+        BusinessPessoaAutenticada pessoaAutenticada = pessoaRepositoryImpl.cadastrar(pessoaEntity);
+        return pessoaAutenticada;
+
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public PessoaEntity cadastrar(@RequestBody PessoaEntity pessoa){

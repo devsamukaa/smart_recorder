@@ -65,7 +65,7 @@ public class PessoaEntity implements Serializable{
         this.nome = pessoaEntity.nome;
         this.cpf = pessoaEntity.cpf;
         this.cnpj = pessoaEntity.cnpj;
-        this.metaConsumo = pessoaEntity.metaConsumo;
+        this.metaConsumo = pessoaEntity.getMetaConsumo() != null ? pessoaEntity.getMetaConsumo() : null;
         this.tipoPessoa = pessoaEntity.tipoPessoa;
         this.email = pessoaEntity.email;
         this.password = pessoaEntity.password;
