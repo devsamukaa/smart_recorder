@@ -20,12 +20,12 @@ public class BandeiraEntity implements Serializable {
     private Double valorAdicional;
 
     @Column(name = "bl_bandeira_ativa", nullable = false)
-    private Boolean isBandeiraAtiva;
+    private boolean isBandeiraAtiva;
 
     public BandeiraEntity() {
     }
 
-    public BandeiraEntity(Long cdBandeira, String nome, Double valorAdicional, Boolean isBandeiraAtiva) {
+    public BandeiraEntity(Long cdBandeira, String nome, Double valorAdicional, boolean isBandeiraAtiva) {
         this.cdBandeira = cdBandeira;
         this.nome = nome;
         this.valorAdicional = valorAdicional;
@@ -56,11 +56,11 @@ public class BandeiraEntity implements Serializable {
         this.valorAdicional = valorAdicionalBandeira;
     }
 
-    public Boolean getBandeiraAtiva() {
+    public boolean getBandeiraAtiva() {
         return isBandeiraAtiva;
     }
 
-    public void setBandeiraAtiva(Boolean bandeiraAtiva) {
+    public void setBandeiraAtiva(boolean bandeiraAtiva) {
         isBandeiraAtiva = bandeiraAtiva;
     }
 }
