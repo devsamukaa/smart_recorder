@@ -46,9 +46,15 @@ public class PessoaResource {
     @PostMapping("/cadastrar")
     public BusinessPessoaAutenticada cadastrarApp(@RequestBody PessoaEntity pessoaEntity) {
 
-        BusinessPessoaAutenticada pessoaAutenticada = pessoaRepositoryImpl.cadastrar(pessoaEntity);
-        return pessoaAutenticada;
+        BusinessPessoaAutenticada pessoaAutenticada = null;
 
+        try{
+            pessoaAutenticada = pessoaRepositoryImpl.cadastrar(pessoaEntity);
+        }catch (Exception e){
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Ocorreu um erro durante o cadastro");
+        }
+
+        return pessoaAutenticada;
     }
 
     @ResponseStatus(HttpStatus.CREATED)

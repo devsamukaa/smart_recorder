@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -99,6 +100,7 @@ public class PessoaRepositoryImpl {
                 instalacaoEntity
         ));
 
+        instalacaoEntity.setFases(new ArrayList<FaseEntity>());
         instalacaoEntity.getFases().add(faseEntity);
 
         BusinessPessoaAutenticada pessoaAutenticada = new BusinessPessoaAutenticada(pessoa);
