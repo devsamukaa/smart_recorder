@@ -43,6 +43,7 @@ public class PessoaResource {
         return pessoaAutenticada;
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/cadastrar")
     public BusinessPessoaAutenticada cadastrarApp(@RequestBody PessoaEntity pessoaEntity) {
 
