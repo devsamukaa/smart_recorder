@@ -1,7 +1,5 @@
 package br.com.gotech.smartrecorder.entity;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -16,10 +14,10 @@ public class BandeiraEntity implements Serializable {
     private Long cdBandeira;
 
     @Column(name = "nm_bandeira", nullable = false, length = 100)
-    private String nomeBandeira;
+    private String nome;
 
     @Column(name = "vl_adc_bandeira", nullable = false)
-    private Double valorAdicionalBandeira;
+    private Double valorAdicional;
 
     @Column(name = "bl_bandeira_ativa", nullable = false)
     private Boolean isBandeiraAtiva;
@@ -27,10 +25,10 @@ public class BandeiraEntity implements Serializable {
     public BandeiraEntity() {
     }
 
-    public BandeiraEntity(Long cdBandeira, String nomeBandeira, Double valorAdicionalBandeira, Boolean isBandeiraAtiva) {
+    public BandeiraEntity(Long cdBandeira, String nome, Double valorAdicional, Boolean isBandeiraAtiva) {
         this.cdBandeira = cdBandeira;
-        this.nomeBandeira = nomeBandeira;
-        this.valorAdicionalBandeira = valorAdicionalBandeira;
+        this.nome = nome;
+        this.valorAdicional = valorAdicional;
         this.isBandeiraAtiva = isBandeiraAtiva;
     }
 
@@ -42,20 +40,20 @@ public class BandeiraEntity implements Serializable {
         this.cdBandeira = cdBandeira;
     }
 
-    public String getNomeBandeira() {
-        return nomeBandeira;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeBandeira(String nomeBandeira) {
-        this.nomeBandeira = nomeBandeira;
+    public void setNome(String nomeBandeira) {
+        this.nome = nomeBandeira;
     }
 
-    public Double getValorAdicionalBandeira() {
-        return valorAdicionalBandeira;
+    public Double getValorAdicional() {
+        return valorAdicional;
     }
 
-    public void setValorAdicionalBandeira(Double valorAdicionalBandeira) {
-        this.valorAdicionalBandeira = valorAdicionalBandeira;
+    public void setValorAdicional(Double valorAdicionalBandeira) {
+        this.valorAdicional = valorAdicionalBandeira;
     }
 
     public Boolean getBandeiraAtiva() {
