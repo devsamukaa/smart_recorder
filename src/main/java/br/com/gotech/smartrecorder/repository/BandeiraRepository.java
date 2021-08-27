@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BandeiraRepository extends JpaRepository<BandeiraEntity, Long> {
 
-    BandeiraEntity findByIsBandeiraAtiva(Boolean isBandeiraAtiva);
+    BandeiraEntity findByIsBandeiraAtiva(boolean isBandeiraAtiva);
 
 }

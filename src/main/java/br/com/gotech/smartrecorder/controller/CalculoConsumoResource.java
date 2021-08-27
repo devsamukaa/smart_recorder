@@ -1,11 +1,9 @@
 package br.com.gotech.smartrecorder.controller;
 
+import br.com.gotech.smartrecorder.entity.*;
 import br.com.gotech.smartrecorder.entity.business.BusinessConsumo;
-import br.com.gotech.smartrecorder.entity.ContaLuzEntity;
-import br.com.gotech.smartrecorder.entity.MedicaoFaseEntity;
 import br.com.gotech.smartrecorder.helper.DateHelper;
-import br.com.gotech.smartrecorder.repository.ContaLuzRepository;
-import br.com.gotech.smartrecorder.repository.MedicaoFaseRepository;
+import br.com.gotech.smartrecorder.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +21,16 @@ public class CalculoConsumoResource {
     @Autowired
     private MedicaoFaseRepository medicaoFaseRepository;
 
+    @Autowired
+    private InstalacaoRepository instalacaoRepository;
+
+    @Autowired
+    BandeiraRepository bandeiraRepository;
+
     @GetMapping("/mensal")
     public BusinessConsumo calculoConsumoMensal(@RequestParam int mes, @RequestParam int ano, @RequestParam Long cdInstalacao, @RequestParam boolean isMedicaoDispositivo) {
 
-        BusinessConsumo businessConsumo = new BusinessConsumo(0.00,0.00);
+        BusinessConsumo businessConsumo = new BusinessConsumo();
         ContaLuzEntity contaLuzEntity = contaLuzRepository.getByInstalacao_CdInstalacaoOrderByDataValidadeDesc(cdInstalacao);
 
         mes = mes == 0 ? 1 : mes;
@@ -69,7 +73,7 @@ public class CalculoConsumoResource {
 
                 }
 
-                businessConsumo.setCusto(this.calculaCustoEnergia(businessConsumo.getKwh(), cdInstalacao, diasMedidos));
+                businessConsumo.setCustoTotal(this.calculaCustoEnergia(businessConsumo.getKwh(), cdInstalacao, diasMedidos));
 
             }catch (Exception e){
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Os parâmetros não foram passados adequadamente");
@@ -93,20 +97,8 @@ public class CalculoConsumoResource {
                     return businessConsumo;
 
                 businessConsumo.setKwh(medicaoFaseEntity.getKwhRelogio() - medicaoFaseEntity.getKwhUltimaConta());
+                businessConsumo = this.calculaCustoEnergia(businessConsumo.getKwh(), cdInstalacao);
 
-                Calendar dataMedicaoEletropaulo = new GregorianCalendar(ano, mesAnterior, contaLuzEntity.getDataValidade().getDate());
-                int diasNoMesMedicaoEletropaulo = dataMedicaoEletropaulo.getActualMaximum(Calendar.DAY_OF_MONTH);
-                dataMedicaoEletropaulo.add(Calendar.DAY_OF_YEAR, -7);
-
-                if (medicaoFaseEntity.getDataMedicao().getDate() < dataMedicaoEletropaulo.getTime().getDate()) {
-
-                    diasMedidos = medicaoFaseEntity.getDataMedicao().getDate() + diasNoMesMedicaoEletropaulo - dataMedicaoEletropaulo.getTime().getDate();
-
-                } else {
-                    diasMedidos = medicaoFaseEntity.getDataMedicao().getDate() - dataMedicaoEletropaulo.getTime().getDate();
-                }
-
-                businessConsumo.setCusto(this.calculaCustoEnergia(businessConsumo.getKwh(), cdInstalacao, diasMedidos));
             }else{
                 return businessConsumo;
             }
@@ -121,6 +113,7 @@ public class CalculoConsumoResource {
 
     }
 
+    /* Forma simplificada */
     public Double calculaCustoEnergia(Double kwh, Long cdInstalacao, int diasMedidos){
 
         ContaLuzEntity contaLuzEntity = contaLuzRepository.getByInstalacao_CdInstalacaoOrderByDataValidadeDesc(cdInstalacao);
@@ -133,4 +126,106 @@ public class CalculoConsumoResource {
 
     }
 
+    public BusinessConsumo calculaCustoEnergia(Double kwh, Long cdInstalacao){
+
+        BusinessConsumo consumoResponse = new BusinessConsumo();
+
+        ContaLuzEntity contaLuzEntity = contaLuzRepository.getByInstalacao_CdInstalacaoOrderByDataValidadeDesc(cdInstalacao);
+        InstalacaoEntity instalacaoEntity = instalacaoRepository.findById(cdInstalacao).get();
+        TipoHabitacaoEntity tipoHabitacaoEntity = instalacaoEntity.getTipoHabitacao();
+        BandeiraEntity bandeiraEntity = bandeiraRepository.findByIsBandeiraAtiva(true);
+
+        final Double tusd = tipoHabitacaoEntity.getValorTusd();
+        final Double te = tipoHabitacaoEntity.getValorTe();
+        Double icms = 0.0;
+
+        if(kwh <= 90) {
+            icms = 0.0;
+        }else if (kwh > 90 && kwh <= 200) {
+            icms = 0.12;
+        }else{
+            icms = 0.25;
+        }
+
+        final Double custoUsoSistDistribuicaoTotal = kwh * tusd * (1 + icms);
+        consumoResponse.setCustoUsoSistDistribuicaoTotal(
+                roundByTwoDecimals(custoUsoSistDistribuicaoTotal)
+        );
+
+        final Double custoUsoSistDistribuicaoIcms = consumoResponse.getCustoUsoSistDistribuicaoTotal() * icms;
+        consumoResponse.setCustoUsoSistDistribuicaoIcms(
+                roundByTwoDecimals(custoUsoSistDistribuicaoIcms)
+        );
+
+        final Double custoEnergiaTeTotal = kwh * te * (1 + icms);
+        consumoResponse.setCustoEnergiaTeTotal(
+                roundByTwoDecimals(custoEnergiaTeTotal)
+        );
+
+        final Double custoEnergiaTeIcms = consumoResponse.getCustoEnergiaTeTotal() * icms;
+        consumoResponse.setCustoEnergiaTeIcms(
+                roundByTwoDecimals(custoEnergiaTeIcms)
+        );
+
+        final Double adicionalBandeiraTotal = kwh * bandeiraEntity.getValorAdicional() * (1 + icms);
+        consumoResponse.setCustoAdicionalBandeiraTotal(
+                roundByTwoDecimals(adicionalBandeiraTotal)
+        );
+
+        final Double custoAdicionalBandeiraIcms = consumoResponse.getCustoAdicionalBandeiraTotal() * icms;
+        consumoResponse.setCustoAdicionalBandeiraIcms(
+                roundByTwoDecimals(
+                        custoAdicionalBandeiraIcms
+                )
+        );
+
+        consumoResponse.setBandeira(bandeiraEntity);
+
+        Double totalCustoSemIcmsPisCofins = custoUsoSistDistribuicaoTotal + custoEnergiaTeTotal + adicionalBandeiraTotal;
+        Double totalIcmsSemPisCofins = custoUsoSistDistribuicaoIcms - custoEnergiaTeIcms - custoAdicionalBandeiraIcms;
+
+        totalCustoSemIcmsPisCofins = totalCustoSemIcmsPisCofins - totalIcmsSemPisCofins;
+
+        final Double pis = randomByRange(0.004, 0.0099);
+        final Double cofins = randomByRange(0.0185, 0.045);
+
+        final Double custoPisPasepTotal = totalCustoSemIcmsPisCofins * pis;
+        consumoResponse.setCustoPisPasepTotal(
+                roundByTwoDecimals(custoPisPasepTotal)
+        );
+
+        final Double custoPisPasepIcms = consumoResponse.getCustoPisPasepTotal() * icms;
+        consumoResponse.setCustoPisPasepIcms(
+                roundByTwoDecimals(custoPisPasepIcms)
+        );
+
+        final Double custoCofinsTotal = totalCustoSemIcmsPisCofins * cofins;
+        consumoResponse.setCustoCofinsTotal(
+                roundByTwoDecimals(custoCofinsTotal)
+        );
+
+        final Double custoCofinsIcms = consumoResponse.getCustoCofinsTotal() * icms;
+        consumoResponse.setCustoCofinsIcms(
+                roundByTwoDecimals(custoCofinsIcms)
+        );
+
+        final Double valorCip = contaLuzEntity.getValorCip();
+        consumoResponse.setCustoCipCosip(valorCip);
+
+        Double totalConsumoTodosImpostos = totalCustoSemIcmsPisCofins + totalIcmsSemPisCofins + custoPisPasepTotal + custoCofinsTotal + valorCip;
+        consumoResponse.setCustoTotal(totalConsumoTodosImpostos);
+
+        return consumoResponse;
+    }
+
+    Double roundByTwoDecimals (Double value) {
+        return Math.round(value * 100.0 ) / 100.0 ;
+    }
+
+    Double randomByRange(Double rangeMin, Double rangeMax) {
+        Random r = new Random();
+        double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
+
+        return  randomValue;
+    }
 }
