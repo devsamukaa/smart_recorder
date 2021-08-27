@@ -185,7 +185,7 @@ public class CalculoConsumoResource {
         consumoResponse.setBandeira(bandeiraEntity);
 
         Double totalCustoSemIcmsPisCofins = custoUsoSistDistribuicaoTotal + custoEnergiaTeTotal + adicionalBandeiraTotal;
-        Double totalIcmsSemPisCofins = custoUsoSistDistribuicaoIcms - custoEnergiaTeIcms - custoAdicionalBandeiraIcms;
+        Double totalIcmsSemPisCofins = custoUsoSistDistribuicaoIcms + custoEnergiaTeIcms + custoAdicionalBandeiraIcms;
 
         totalCustoSemIcmsPisCofins = totalCustoSemIcmsPisCofins - totalIcmsSemPisCofins;
 
