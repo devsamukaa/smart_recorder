@@ -216,7 +216,7 @@ public class CalculoConsumoResource {
         consumoResponse.setCustoCipCosip(valorCip);
 
         final Double totalTodosImpostos = totalIcmsSemPisCofins + custoPisPasepIcms + custoCofinsIcms;
-        consumoResponse.setTotalTributos(totalTodosImpostos);
+        consumoResponse.setTotalTributos(roundByTwoDecimals(totalTodosImpostos));
 
         final Double totalCustoComTodosImpostos = totalCustoSemIcmsPisCofins + totalIcmsSemPisCofins + custoPisPasepTotal + custoCofinsTotal + valorCip;
         consumoResponse.setCustoTotal(roundByTwoDecimals(totalCustoComTodosImpostos));
