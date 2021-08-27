@@ -147,6 +147,9 @@ public class CalculoConsumoResource {
             icms = 0.25;
         }
 
+        consumoResponse.setKwh(kwh);
+        consumoResponse.setIcms(roundByTwoDecimals(icms * 100));
+
         final Double custoUsoSistDistribuicaoTotal = kwh * tusd * (1 + icms);
         consumoResponse.setCustoUsoSistDistribuicaoTotal(
                 roundByTwoDecimals(custoUsoSistDistribuicaoTotal)
@@ -212,8 +215,11 @@ public class CalculoConsumoResource {
         final Double valorCip = contaLuzEntity.getValorCip();
         consumoResponse.setCustoCipCosip(valorCip);
 
-        Double totalConsumoTodosImpostos = totalCustoSemIcmsPisCofins + totalIcmsSemPisCofins + custoPisPasepTotal + custoCofinsTotal + valorCip;
-        consumoResponse.setCustoTotal(totalConsumoTodosImpostos);
+        final Double totalTodosImpostos = totalIcmsSemPisCofins + custoPisPasepIcms + custoCofinsIcms;
+        consumoResponse.setTotalTributos(totalTodosImpostos);
+
+        final Double totalCustoComTodosImpostos = totalCustoSemIcmsPisCofins + totalIcmsSemPisCofins + custoPisPasepTotal + custoCofinsTotal + valorCip;
+        consumoResponse.setCustoTotal(roundByTwoDecimals(totalCustoComTodosImpostos));
 
         return consumoResponse;
     }
