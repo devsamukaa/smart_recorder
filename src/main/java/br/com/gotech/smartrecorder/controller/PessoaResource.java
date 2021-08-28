@@ -1,5 +1,6 @@
 package br.com.gotech.smartrecorder.controller;
 
+import br.com.gotech.smartrecorder.dto.AlterarSenhaDto;
 import br.com.gotech.smartrecorder.entity.PessoaEntity;
 import br.com.gotech.smartrecorder.entity.business.BusinessPessoaAutenticada;
 import br.com.gotech.smartrecorder.repository.PessoaRepository;
@@ -38,6 +39,18 @@ public class PessoaResource {
 
         if(pessoaAutenticada == null) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Usuário ou senha inválidos");
+        }
+
+        return pessoaAutenticada;
+    }
+
+    @PostMapping("/alterar_senha")
+    public BusinessPessoaAutenticada alterarSenha(@RequestBody AlterarSenhaDto pessoa) {
+
+        BusinessPessoaAutenticada pessoaAutenticada = pessoaRepositoryImpl.infosByEmailAndPassword(pessoa.getEmail(), pessoa.getPassword());
+
+        if(pessoaAutenticada == null) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Senha atual inválida");
         }
 
         return pessoaAutenticada;

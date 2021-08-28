@@ -1,17 +1,13 @@
 package br.com.gotech.smartrecorder.repository;
 
+import br.com.gotech.smartrecorder.dto.AlterarSenhaDto;
 import br.com.gotech.smartrecorder.entity.*;
 import br.com.gotech.smartrecorder.entity.business.BusinessPessoaAutenticada;
 import br.com.gotech.smartrecorder.entity.enum_classes.IdentificadorFase;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class PessoaRepositoryImpl {
@@ -42,27 +38,7 @@ public class PessoaRepositoryImpl {
             return null;
         }
 
-        BusinessPessoaAutenticada pessoaAutenticada = new BusinessPessoaAutenticada(pessoa);
-
-        pessoaAutenticada.setInstalacao(
-                instalacaoRepository.getByPessoa_CdPessoa(pessoaAutenticada.getCdPessoa())
-        );
-
-        if(pessoaAutenticada.getInstalacao() != null){
-            pessoaAutenticada.setContaLuz(
-                    contaLuzRepository.getByInstalacao_CdInstalacaoOrderByDataValidadeDesc(
-                            pessoaAutenticada.getInstalacao().getCdInstalacao()
-                    )
-            );
-
-            pessoaAutenticada.getInstalacao().setFases(
-                faseRepository.findByInstalacaoCdInstalacao(
-                    pessoaAutenticada.getInstalacao().getCdInstalacao()
-                )
-            );
-        }
-
-        return pessoaAutenticada;
+        return getPessoaAutenticada(pessoa);
     }
 
     @Transactional
@@ -108,6 +84,46 @@ public class PessoaRepositoryImpl {
 
         return pessoaAutenticada;
 
+    }
+
+    @Transactional
+    public BusinessPessoaAutenticada alterarSenha(AlterarSenhaDto pessoa) {
+
+        PessoaEntity pessoaCompleta = pessoaRepository.findByEmailAndPassword(pessoa.getEmail(), pessoa.getPassword());
+
+        if(pessoa == null) {
+            return null;
+        }
+
+        pessoaCompleta.setPassword(pessoa.getNewPassword());
+        pessoaRepository.save(pessoaCompleta);
+
+        return getPessoaAutenticada(pessoaCompleta);
+
+    }
+
+    private BusinessPessoaAutenticada getPessoaAutenticada(PessoaEntity pessoaCompleta) {
+        BusinessPessoaAutenticada pessoaAutenticada = new BusinessPessoaAutenticada(pessoaCompleta);
+
+        pessoaAutenticada.setInstalacao(
+                instalacaoRepository.getByPessoa_CdPessoa(pessoaAutenticada.getCdPessoa())
+        );
+
+        if(pessoaAutenticada.getInstalacao() != null){
+            pessoaAutenticada.setContaLuz(
+                    contaLuzRepository.getByInstalacao_CdInstalacaoOrderByDataValidadeDesc(
+                            pessoaAutenticada.getInstalacao().getCdInstalacao()
+                    )
+            );
+
+            pessoaAutenticada.getInstalacao().setFases(
+                    faseRepository.findByInstalacaoCdInstalacao(
+                            pessoaAutenticada.getInstalacao().getCdInstalacao()
+                    )
+            );
+        }
+
+        return pessoaAutenticada;
     }
 
 }
