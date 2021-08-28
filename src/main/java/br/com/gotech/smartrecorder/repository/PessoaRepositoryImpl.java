@@ -91,7 +91,7 @@ public class PessoaRepositoryImpl {
 
         PessoaEntity pessoaCompleta = pessoaRepository.findByEmailAndPassword(pessoa.getEmail(), pessoa.getPassword());
 
-        if(pessoa == null) {
+        if(pessoaCompleta == null) {
             return null;
         }
 
