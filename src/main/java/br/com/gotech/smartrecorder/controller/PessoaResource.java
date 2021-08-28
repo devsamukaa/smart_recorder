@@ -47,7 +47,7 @@ public class PessoaResource {
     @PostMapping("/alterar_senha")
     public BusinessPessoaAutenticada alterarSenha(@RequestBody AlterarSenhaDto pessoa) {
 
-        BusinessPessoaAutenticada pessoaAutenticada = pessoaRepositoryImpl.infosByEmailAndPassword(pessoa.getEmail(), pessoa.getPassword());
+        BusinessPessoaAutenticada pessoaAutenticada = pessoaRepositoryImpl.alterarSenha(pessoa);
 
         if(pessoaAutenticada == null) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Senha atual inválida");
