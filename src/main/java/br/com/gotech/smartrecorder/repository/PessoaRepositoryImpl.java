@@ -204,7 +204,7 @@ public class PessoaRepositoryImpl {
 
         String format = "Olá %s,\n\n"
                 + "Conforme solicitado, sua senha foi redefinida para:\n\n"
-                + "%s:\n\n"
+                + "%s\n\n"
                 + "Conte conosco!\n\n"
                 + "Abraços,\n"
                 + "Time GoTech.";
