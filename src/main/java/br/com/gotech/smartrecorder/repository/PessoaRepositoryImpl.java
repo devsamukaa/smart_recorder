@@ -162,7 +162,18 @@ public class PessoaRepositoryImpl {
 
         String to = esqueceuSenhaDto.getEmail();
         String subject = "GoTech - E-mail de redefinição da Senha";
-        String text = "Este é um exemplo de e-mail";
+
+        String format = "Olá %s,\n\n"
+                + "Acesse o link abaixo para realizar a alteração da sua senha:\n\n"
+                + "https://google.com.br/redefinir_senha?id=%s\n\n"
+                + "Conte conosco!\n\n"
+                + "Abraços,\n"
+                + "Time GoTech.";
+
+        String text = String.format(
+                format,
+                pessoaEntity.getNome().split(" ")[0],
+                pessoaEntity.getPassword());
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("noreply@gotech.com");
