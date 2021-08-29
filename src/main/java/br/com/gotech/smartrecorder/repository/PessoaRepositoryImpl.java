@@ -162,7 +162,7 @@ public class PessoaRepositoryImpl {
 
         String format = "Olá %s,\n\n"
                 + "Acesse o link abaixo para realizar a alteração da sua senha:\n\n"
-                + "https://google.com.br/redefinir_senha?id=%s\n\n"
+                + "https://smartrecorder-web.herokuapp.com/redefinir_senha/?id=%s&cd=%d\n\n"
                 + "Conte conosco!\n\n"
                 + "Abraços,\n"
                 + "Time GoTech.";
@@ -170,7 +170,8 @@ public class PessoaRepositoryImpl {
         String text = String.format(
                 format,
                 pessoaEntity.getNome().split(" ")[0],
-                pessoaEntity.getPassword());
+                pessoaEntity.getPassword(),
+                pessoaEntity.getCdPessoa());
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("noreply@gotech.com");
