@@ -7,4 +7,6 @@ public interface PessoaRepository extends JpaRepository<PessoaEntity, Long> {
 
     PessoaEntity findByEmailAndPassword(String email, String password);
 
+    PessoaEntity findByEmail(String email);
+
 }

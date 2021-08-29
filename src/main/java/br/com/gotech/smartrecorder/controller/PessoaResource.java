@@ -2,6 +2,8 @@ package br.com.gotech.smartrecorder.controller;
 
 import br.com.gotech.smartrecorder.dto.AlterarSenhaDto;
 import br.com.gotech.smartrecorder.dto.AtualizarPerfilDto;
+import br.com.gotech.smartrecorder.dto.EsqueceuSenhaDto;
+import br.com.gotech.smartrecorder.dto.ResponseDefault;
 import br.com.gotech.smartrecorder.entity.PessoaEntity;
 import br.com.gotech.smartrecorder.entity.business.BusinessPessoaAutenticada;
 import br.com.gotech.smartrecorder.repository.PessoaRepository;
@@ -9,6 +11,7 @@ import br.com.gotech.smartrecorder.repository.PessoaRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -43,6 +46,20 @@ public class PessoaResource {
         }
 
         return pessoaAutenticada;
+    }
+
+    @PostMapping("/esqueceu_senha_send_mail")
+    public ResponseDefault alterarSenha(@RequestBody EsqueceuSenhaDto email) {
+
+        ResponseDefault responseDefault = pessoaRepositoryImpl.enviarEsqueceuSenha(email);
+
+        if(responseDefault == null) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "E-mail não existente");
+        }else if(responseDefault.getStatus() == -1) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Erro, tente novamente");
+        }
+
+        return responseDefault;
     }
 
     @PostMapping("/alterar_senha")

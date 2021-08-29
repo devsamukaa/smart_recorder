@@ -2,10 +2,14 @@ package br.com.gotech.smartrecorder.repository;
 
 import br.com.gotech.smartrecorder.dto.AlterarSenhaDto;
 import br.com.gotech.smartrecorder.dto.AtualizarPerfilDto;
+import br.com.gotech.smartrecorder.dto.EsqueceuSenhaDto;
+import br.com.gotech.smartrecorder.dto.ResponseDefault;
 import br.com.gotech.smartrecorder.entity.*;
 import br.com.gotech.smartrecorder.entity.business.BusinessPessoaAutenticada;
 import br.com.gotech.smartrecorder.entity.enum_classes.IdentificadorFase;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -30,6 +34,9 @@ public class PessoaRepositoryImpl {
 
     @Autowired
     private TipoHabitacaoRepository tipoHabitacaoRepository;
+
+    @Autowired
+    private JavaMailSender emailSender;
 
     public BusinessPessoaAutenticada infosByEmailAndPassword(String email, String password) {
 
@@ -142,6 +149,38 @@ public class PessoaRepositoryImpl {
         }
 
         return pessoaAutenticada;
+    }
+
+    public ResponseDefault enviarEsqueceuSenha (EsqueceuSenhaDto esqueceuSenhaDto) {
+
+        ResponseDefault responseDefault = new ResponseDefault();
+        PessoaEntity pessoaEntity = pessoaRepository.findByEmail(esqueceuSenhaDto.getEmail());
+
+        if(pessoaEntity == null) {
+            return null;
+        }
+
+        String to = esqueceuSenhaDto.getEmail();
+        String subject = "GoTech - E-mail de redefinição da Senha";
+        String text = "Este é um exemplo de e-mail";
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("noreply@gotech.com");
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(text);
+
+        responseDefault.setStatus(0);
+        responseDefault.setMessage("E-mail enviado com sucesso!");
+
+        try {
+            emailSender.send(message);
+        } catch (Exception e) {
+            responseDefault.setStatus(-1);
+            responseDefault.setMessage("Erro ao enviar mensagem");
+        }
+
+        return responseDefault;
     }
 
 }
