@@ -7,6 +7,7 @@ public class RedefinirSenhaDto implements Serializable {
     private Long cd;
     private String id;
     private String password;
+    private String openPassword;
 
     public RedefinirSenhaDto() {
     }
@@ -33,5 +34,13 @@ public class RedefinirSenhaDto implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getOpenPassword() {
+        return openPassword;
+    }
+
+    public void setOpenPassword(String openPassword) {
+        this.openPassword = openPassword;
     }
 }

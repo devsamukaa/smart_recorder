@@ -4,6 +4,7 @@ import br.com.gotech.smartrecorder.dto.*;
 import br.com.gotech.smartrecorder.entity.*;
 import br.com.gotech.smartrecorder.entity.business.BusinessPessoaAutenticada;
 import br.com.gotech.smartrecorder.entity.enum_classes.IdentificadorFase;
+import br.com.gotech.smartrecorder.util.GoTechMail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -33,7 +34,7 @@ public class PessoaRepositoryImpl {
     private TipoHabitacaoRepository tipoHabitacaoRepository;
 
     @Autowired
-    private JavaMailSender emailSender;
+    GoTechMail goTechMailSender;
 
     public BusinessPessoaAutenticada infosByEmailAndPassword(String email, String password) {
 
@@ -173,17 +174,13 @@ public class PessoaRepositoryImpl {
                 pessoaEntity.getPassword(),
                 pessoaEntity.getCdPessoa());
 
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("noreply@gotech.com");
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(text);
+        goTechMailSender.sendMail(text, to, subject);
 
         responseDefault.setStatus(0);
         responseDefault.setMessage("E-mail enviado com sucesso!");
 
         try {
-            emailSender.send(message);
+
         } catch (Exception e) {
             responseDefault.setStatus(-1);
             responseDefault.setMessage("Erro ao enviar mensagem");
@@ -201,6 +198,23 @@ public class PessoaRepositoryImpl {
         if(pessoaEntity == null) {
             return null;
         }
+
+        String to = pessoaEntity.getEmail();
+        String subject = "GoTech - Senha Redefinida";
+
+        String format = "Olá %s,\n\n"
+                + "Conforme solicitado, sua senha foi redefinida para:\n\n"
+                + "%s:\n\n"
+                + "Conte conosco!\n\n"
+                + "Abraços,\n"
+                + "Time GoTech.";
+
+        String text = String.format(
+                format,
+                pessoaEntity.getNome().split(" ")[0],
+                redefinirSenhaDto.getOpenPassword());
+
+        goTechMailSender.sendMail(text, to, subject);
 
         pessoaEntity.setPassword(redefinirSenhaDto.getPassword());
         response.setNome(pessoaEntity.getNome());
