@@ -1,6 +1,7 @@
 package br.com.gotech.smartrecorder.repository;
 
 import br.com.gotech.smartrecorder.dto.AlterarSenhaDto;
+import br.com.gotech.smartrecorder.dto.AtualizarPerfilDto;
 import br.com.gotech.smartrecorder.entity.*;
 import br.com.gotech.smartrecorder.entity.business.BusinessPessoaAutenticada;
 import br.com.gotech.smartrecorder.entity.enum_classes.IdentificadorFase;
@@ -100,6 +101,23 @@ public class PessoaRepositoryImpl {
 
         return getPessoaAutenticada(pessoaCompleta);
 
+    }
+
+    @Transactional
+    public BusinessPessoaAutenticada atualizarPerfil(AtualizarPerfilDto pessoa) {
+
+        PessoaEntity pessoaCompleta = pessoaRepository.findById(pessoa.getCdPessoa()).get();
+
+        if(pessoaCompleta == null) {
+            return null;
+        }
+
+        pessoaCompleta.setNome(pessoa.getNome());
+        pessoaCompleta.setCpf(pessoa.getCpf());
+        pessoaCompleta.setEmail(pessoa.getEmail());
+        pessoaRepository.save(pessoaCompleta);
+
+        return getPessoaAutenticada(pessoaCompleta);
     }
 
     private BusinessPessoaAutenticada getPessoaAutenticada(PessoaEntity pessoaCompleta) {
