@@ -162,7 +162,7 @@ public class PessoaRepositoryImpl {
 
         String format = "Olá %s,\n\n"
                 + "Acesse o link abaixo para realizar a alteração da sua senha:\n\n"
-                + "https://smartrecorder-web.herokuapp.com/redefinir_senha/?id=%s&cd=%d\n\n"
+                + "https://smartrecorder-web.herokuapp.com/confirmacao/?id=%s&cd=%d\n\n"
                 + "Conte conosco!\n\n"
                 + "Abraços,\n"
                 + "Time GoTech.";
