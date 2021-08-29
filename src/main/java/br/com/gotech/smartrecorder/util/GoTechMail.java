@@ -13,7 +13,6 @@ public class GoTechMail {
     @Autowired
     private JavaMailSender emailSender;
 
-    @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
