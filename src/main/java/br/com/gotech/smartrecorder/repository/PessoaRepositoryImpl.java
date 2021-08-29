@@ -1,9 +1,6 @@
 package br.com.gotech.smartrecorder.repository;
 
-import br.com.gotech.smartrecorder.dto.AlterarSenhaDto;
-import br.com.gotech.smartrecorder.dto.AtualizarPerfilDto;
-import br.com.gotech.smartrecorder.dto.EsqueceuSenhaDto;
-import br.com.gotech.smartrecorder.dto.ResponseDefault;
+import br.com.gotech.smartrecorder.dto.*;
 import br.com.gotech.smartrecorder.entity.*;
 import br.com.gotech.smartrecorder.entity.business.BusinessPessoaAutenticada;
 import br.com.gotech.smartrecorder.entity.enum_classes.IdentificadorFase;
@@ -192,6 +189,29 @@ public class PessoaRepositoryImpl {
         }
 
         return responseDefault;
+    }
+
+    @Transactional
+    public ResponseRedefinirSenha redefinirSenha(RedefinirSenhaDto redefinirSenhaDto) {
+
+        ResponseRedefinirSenha response = new ResponseRedefinirSenha();
+        PessoaEntity pessoaEntity = pessoaRepository.findByCdPessoaAndPassword(redefinirSenhaDto.getCd(), redefinirSenhaDto.getId());
+
+        if(pessoaEntity == null) {
+            return null;
+        }
+
+        pessoaEntity.setPassword(redefinirSenhaDto.getPassword());
+        response.setNome(pessoaEntity.getNome());
+        response.setStatus(0);
+
+        try{
+            pessoaRepository.save(pessoaEntity);
+        }catch (Exception e) {
+            response.setStatus(-1);
+        }
+
+        return response;
     }
 
 }

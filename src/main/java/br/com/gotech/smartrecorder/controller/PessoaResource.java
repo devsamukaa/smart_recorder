@@ -1,9 +1,6 @@
 package br.com.gotech.smartrecorder.controller;
 
-import br.com.gotech.smartrecorder.dto.AlterarSenhaDto;
-import br.com.gotech.smartrecorder.dto.AtualizarPerfilDto;
-import br.com.gotech.smartrecorder.dto.EsqueceuSenhaDto;
-import br.com.gotech.smartrecorder.dto.ResponseDefault;
+import br.com.gotech.smartrecorder.dto.*;
 import br.com.gotech.smartrecorder.entity.PessoaEntity;
 import br.com.gotech.smartrecorder.entity.business.BusinessPessoaAutenticada;
 import br.com.gotech.smartrecorder.repository.PessoaRepository;
@@ -60,6 +57,20 @@ public class PessoaResource {
         }
 
         return responseDefault;
+    }
+
+    @PostMapping("/redefinir_senha")
+    public ResponseRedefinirSenha redefinirSenha(@RequestBody RedefinirSenhaDto redefinirSenhaDto) {
+
+        ResponseRedefinirSenha responseRedefinirSenha = pessoaRepositoryImpl.redefinirSenha(redefinirSenhaDto);
+
+        if(responseRedefinirSenha == null) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "E-mail não existente");
+        }else if(responseRedefinirSenha.getStatus() == -1) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Erro, tente novamente");
+        }
+
+        return responseRedefinirSenha;
     }
 
     @PostMapping("/alterar_senha")
