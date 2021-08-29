@@ -34,7 +34,7 @@ public class PessoaRepositoryImpl {
     private TipoHabitacaoRepository tipoHabitacaoRepository;
 
     @Autowired
-    GoTechMail goTechMailSender;
+    JavaMailSender emailSender;
 
     public BusinessPessoaAutenticada infosByEmailAndPassword(String email, String password) {
 
@@ -174,7 +174,7 @@ public class PessoaRepositoryImpl {
                 pessoaEntity.getPassword(),
                 pessoaEntity.getCdPessoa());
 
-        goTechMailSender.sendMail(text, to, subject);
+        this.sendMail(text, to, subject);
 
         responseDefault.setStatus(0);
         responseDefault.setMessage("E-mail enviado com sucesso!");
@@ -214,7 +214,7 @@ public class PessoaRepositoryImpl {
                 pessoaEntity.getNome().split(" ")[0],
                 redefinirSenhaDto.getOpenPassword());
 
-        goTechMailSender.sendMail(text, to, subject);
+        this.sendMail(text, to, subject);
 
         pessoaEntity.setPassword(redefinirSenhaDto.getPassword());
         response.setNome(pessoaEntity.getNome());
@@ -227,6 +227,18 @@ public class PessoaRepositoryImpl {
         }
 
         return response;
+    }
+
+    public boolean sendMail(String message, String to, String subject) {
+
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setFrom("noreply@gotech.com");
+        mail.setTo(to);
+        mail.setSubject(subject);
+        mail.setText(message);
+        emailSender.send(mail);
+
+        return true;
     }
 
 }

@@ -13,6 +13,7 @@ public class GoTechMail {
     @Autowired
     private JavaMailSender emailSender;
 
+    @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
@@ -28,18 +29,6 @@ public class GoTechMail {
         props.put("mail.debug", "true");
 
         return mailSender;
-    }
-
-    public boolean sendMail(String message, String to, String subject) {
-
-        SimpleMailMessage mail = new SimpleMailMessage();
-        mail.setFrom("noreply@gotech.com");
-        mail.setTo(to);
-        mail.setSubject(subject);
-        mail.setText(message);
-        emailSender.send(mail);
-
-        return true;
     }
 
 }
