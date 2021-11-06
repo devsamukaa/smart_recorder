@@ -1,0 +1,1731 @@
+{
+	"info": {
+		"_postman_id": "bc9a7859-56ea-42e0-bdfe-7a7b4df3aefa",
+		"name": "FIAP - SmartRecorder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TipoHabitacao",
+			"item": [
+				{
+					"name": "tipo_habitacao GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/tipo_habitacao",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tipo_habitacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tipo_habitacao POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"CASA\",\r\n    \"valorTusd\": 0.30752,\r\n    \"valorTe\": 0.28753\r\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/tipo_habitacao",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tipo_habitacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tipo_habitacao PUT",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"CASA\",\n    \"valorTusd\": 0.30752,\n    \"valorTe\": 0.28753\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/tipo_habitacao/5",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tipo_habitacao",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tipo_habitacao DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/tipo_habitacao/5",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tipo_habitacao",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bandeira",
+			"item": [
+				{
+					"name": "bandeira GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/bandeira",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"bandeira"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bandeira POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Vermelha 2\",\r\n    \"valorAdicional\": 0.09492,\r\n    \"isBandeiraAtiva\": true\r\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/bandeira",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"bandeira"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bandeira PUT",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"cdBandeira\": 8,\n        \"nome\": \"Vermelha 2\",\n        \"valorAdicional\": 0.09492,\n        \"bandeiraAtiva\": true\n    }"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/bandeira/8",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"bandeira",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bandeira DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/bandeira/5",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"bandeira",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Plano",
+			"item": [
+				{
+					"name": "plano GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/plano",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"plano"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "plano POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"MENSAL\",\r\n    \"valorAdesao\": 0.0,\r\n    \"valorMensalidade\": 12.5\r\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/plano",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"plano"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "plano PUT",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"MENSAL\",\n    \"valorAdesao\": 0.0,\n    \"valorMensalidade\": 12.5\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/plano/5",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"plano",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "plano DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/plano/5",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"plano",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Meta Consumo",
+			"item": [
+				{
+					"name": "meta_consumo GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/meta_consumo",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"meta_consumo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "meta_consumo POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"valor\": 600,\r\n    \"dataCriacao\": \"17/08/2021\"\r\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/meta_consumo",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"meta_consumo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "meta_consumo PUT",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"valor\": 130.00,\n\t\"dataCriacao\": \"20/04/2021\"\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/meta_consumo/2",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"meta_consumo",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "meta_consumo DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/meta_consumo/2",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"meta_consumo",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pessoa",
+			"item": [
+				{
+					"name": "pessoa GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/pessoa",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pessoa POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\":\"Kleber Oliveira\",\n\t\"cnpj\": \"72.459.796/0001-56\",\n\t\"tipoPessoa\": \"PJ\",\n\t\"metaConsumo\":{\n\t\t\"cdMetaConsumo\":10\n\t},\n    \"password\": \"c3accb4a972bf0c58143072993119a2da4798893\"\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/pessoa",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pessoa/atualizar_perfil POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cdPessoa\": 1,\n\t\"nome\":\"Don Juan\",\n\t\"cpf\": \"488.732.150-11\",\n\t\"email\": \"don.juan@outlook.com\"\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/pessoa/atualizar_perfil",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pessoa",
+								"atualizar_perfil"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pessoa/cadastrar POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Joelma Caldeira\",\n    \"email\": \"joelma.caldeira@hotmail.com\",\n    \"cpf\": \"059.704.580-15\",\n    \"cnpj\": null,\n    \"metaConsumo\": null,\n    \"tipoPessoa\": \"PF\",\n    \"password\": \"c3accb4a972bf0c58143072993119a2da4798893\",\n    \"plano\": {\n        \"cdPlano\": 1\n    }\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/pessoa/cadastrar",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pessoa",
+								"cadastrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pessoa/login POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"samuel.rocha.tj@outlook.com\",\n    \"password\": \"c3accb4a972bf0c58143072993119a2da4798893\"\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/pessoa/login",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pessoa",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pessoa/alterar_senha POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"samuel.rocha.tj@outlook.com\"\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/pessoa/esqueceu_senha_send_mail",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pessoa",
+								"esqueceu_senha_send_mail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pessoa/esqueceu_senha_send_mail POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"samuel.rocha.tj@outlook.com\"\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/pessoa/esqueceu_senha_send_mail",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pessoa",
+								"esqueceu_senha_send_mail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pessoa/redefinir_senha POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cd\": 1,\n    \"id\": \"8dd3db2811eaae4a03c816487fd14772cd73368b\",\n    \"password\": \"7c4a8d09ca3762af61e59520943dc26494f8941b\"\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/pessoa/redefinir_senha",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pessoa",
+								"redefinir_senha"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pessoa PUT",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cdPessoa\": 5,\n    \"nome\": \"Karina Santos\",\n    \"email\": \"karina.santos@hotmail.com\",\n    \"cpf\": null,\n    \"cnpj\": \"33.855.259/0001-73\",\n    \"metaConsumo\": {\n        \"cdMetaConsumo\": 5,\n        \"valor\": 350.0,\n        \"dataCriacao\": \"2021-08-17T00:00:00.000+00:00\"\n    },\n    \"tipoPessoa\": \"PJ\",\n    \"password\": \"c3accb4a972bf0c58143072993119a2da4798893\",\n    \"plano\": {\n        \"cdPlano\": 1,\n        \"nome\": \"FREE\",\n        \"valorAdesao\": 0.0,\n        \"valorMensalidade\": 0.0\n    }\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/pessoa/5",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pessoa",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pessoa DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/pessoa/43",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"pessoa",
+								"43"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Endereco",
+			"item": [
+				{
+					"name": "endereco GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/endereco",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"endereco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "endereco POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"logradouro\":\"RUA TEERA\",\n\t\"numero\": 12,\n\t\"complemento\": \"casa\",\n\t\"bairro\": \"JARDIM IPANEMA\",\n\t\"cidade\": \"SANTO ANDRÉ\",\n\t\"uf\": \"SP\",\n\t\"cep\": \"09121-505\",\n\t\"latitude\": -23.5458797,\n\t\"longitude\": -46.8928818\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/endereco",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"endereco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "endereco PUT",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"logradouro\":\"Teste Put\",\n\t\"numero\": 700,\n\t\"complemento\": \"Teste put\",\n\t\"bairro\": \"Vila São Nicolau\",\n\t\"cidade\": \"Jandira\",\n\t\"uf\": \"SP\",\n\t\"cep\": \"06620-010\",\n\t\"latitude\": -23.5458797,\n\t\"longitude\": -46.8928818\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/endereco/2",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"endereco",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "endereco DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/endereco/9",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"endereco",
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Instalacao",
+			"item": [
+				{
+					"name": "instalacao GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/instalacao",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"instalacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "instalacao POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"isAtiva\": true,\n\t\"endereco\": {\n\t\t\"cdEndereco\": 4\n\t},\n\t\"tipoHabitacao\": {\n\t\t\"cdTipoHabitacao\": 1\n\t},\n\t\"pessoa\": {\n\t\t\"cdPessoa\": 4\n\t}\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/instalacao",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"instalacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "instalacao PUT",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"isAtiva\": false,\n\t\"endereco\": {\n\t\t\"cdEndereco\": 2\n\t},\n\t\"tipoHabitacao\": {\n\t\t\"cdTipoHabitacao\": 2\n\t},\n\t\"pessoa\": {\n\t\t\"cdPessoa\": 2\n\t}\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/instalacao/2",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"instalacao",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "instalacao DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/instalacao/2",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"instalacao",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ContaLuz",
+			"item": [
+				{
+					"name": "conta_luz GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/conta_luz",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"conta_luz"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conta_luz POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"kwhConta\": 122,\n\t\"valorPago\": 85.44,\n\t\"valorTributos\": 12.91,\n    \"valorCip\": 5.74,\n\t\"dataValidade\": \"11/05/2021\",\n\t\"dataRegistro\": \"18/08/2021\",\n\t\"instalacao\": {\n\t\t\"cdInstalacao\": 1\n\t}\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/conta_luz",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"conta_luz"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conta_luz PUT",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"kwhConta\": 122,\n\t\"valorPago\": 85.45,\n\t\"valorTributos\": 12.91,\n    \"valorCip\": 5.74,\n\t\"dataValidade\": \"26/03/2021\",\n\t\"dataRegistro\": \"25/04/2021\",\n\t\"instalacao\": {\n\t\t\"cdInstalacao\": 1\n\t}\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/conta_luz/1",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"conta_luz",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conta_luz DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/conta_luz/6",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"conta_luz",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fase",
+			"item": [
+				{
+					"name": "fase GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/fase",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fase POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"FASE 1\",\n\t\"identificadorFase\": \"FASE\",\n\t\"instalacao\": {\n\t\t\"cdInstalacao\": 2\n\t}\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/fase",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fase PUT",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"FASE 3\",\n\t\"identificadorFase\": \"FASE\",\n\t\"instalacao\": {\n\t\t\"cdInstalacao\": 1\n\t}\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/fase/4",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fase",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fase DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/fase/4",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fase",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MedicaoFase",
+			"item": [
+				{
+					"name": "medicao_fase GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/medicao_fase",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"medicao_fase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "medicao_fase (Com dispositivo) POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isMedicaoDispositivo\": true,\r\n    \"kwh\": 2.0328,\r\n    \"tensao\": 127,\r\n    \"corrente\": 10.664,\r\n    \"dataMedicao\": \"01/04/2021 00:00:00\",\r\n    \"fase\": {\r\n        \"cdFase\": 1\r\n    },\r\n    \"instalacao\": {\r\n        \"cdInstalacao\": 1\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/medicao_fase",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"medicao_fase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "medicao_fase (Sem dispositivo) POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isMedicaoDispositivo\": false,\r\n    \"dataMedicao\": \"01/05/2021 00:00:00\",\r\n    \"kwhRelogio\": 38665,\r\n    \"kwhUltimaConta\": 38543,\r\n    \"fase\": {\r\n        \"cdFase\": 1\r\n    },\r\n    \"instalacao\": {\r\n        \"cdInstalacao\": 1\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/medicao_fase",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"medicao_fase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "medicao_fase (Com dispositivo) PUT",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isMedicaoDispositivo\": true,\r\n    \"kwh\": 2.0328,\r\n    \"tensao\": 127,\r\n    \"corrente\": 10.664,\r\n    \"dataMedicao\": \"03/04/2021 00:00:00\",\r\n    \"fase\": {\r\n        \"cdFase\": 1\r\n    },\r\n    \"instalacao\": {\r\n        \"cdInstalacao\": 1\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/medicao_fase/3",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"medicao_fase",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "medicao_fase (Sem dispositivo) PUT",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cdMedicaoFase\": 6,\r\n    \"isMedicaoDispositivo\": false,\r\n    \"dataMedicao\": \"18/08/2021 00:00:00\",\r\n    \"kwhRelogio\": 38665,\r\n    \"kwhUltimaConta\": 38543,\r\n    \"fase\": {\r\n        \"cdFase\": 1\r\n    },\r\n    \"instalacao\": {\r\n        \"cdInstalacao\": 1\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/medicao_fase/6",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"medicao_fase",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "medicao_fase DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/medicao_fase/2",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"medicao_fase",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CalculoConsumo",
+			"item": [
+				{
+					"name": "calculo_consumo/mensal (Com dispositivo) GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/calculo_consumo/mensal?mes=4&ano=2021&cdInstalacao=1&isMedicaoDispositivo=true",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"calculo_consumo",
+								"mensal"
+							],
+							"query": [
+								{
+									"key": "mes",
+									"value": "4"
+								},
+								{
+									"key": "ano",
+									"value": "2021"
+								},
+								{
+									"key": "cdInstalacao",
+									"value": "1"
+								},
+								{
+									"key": "isMedicaoDispositivo",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "calculo_consumo/mensal (Sem dispositivo) GET",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://smartrecorder-api.herokuapp.com/calculo_consumo/mensal?mes=9&ano=2021&cdInstalacao=1&isMedicaoDispositivo=false",
+							"protocol": "https",
+							"host": [
+								"smartrecorder-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"calculo_consumo",
+								"mensal"
+							],
+							"query": [
+								{
+									"key": "mes",
+									"value": "9"
+								},
+								{
+									"key": "ano",
+									"value": "2021"
+								},
+								{
+									"key": "cdInstalacao",
+									"value": "1"
+								},
+								{
+									"key": "isMedicaoDispositivo",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
