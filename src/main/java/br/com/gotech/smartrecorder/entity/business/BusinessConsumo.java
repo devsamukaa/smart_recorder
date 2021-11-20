@@ -153,6 +153,11 @@ public class BusinessConsumo implements Serializable {
     public void setBandeira(BandeiraEntity bandeira) {
         this.bandeira = bandeira;
     }
+
+    @Override
+    public String toString(){
+        return "BusinessConsumo:[kwh: "+this.kwh+"]";
+    }
 }
 
 

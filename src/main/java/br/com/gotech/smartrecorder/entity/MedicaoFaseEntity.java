@@ -123,5 +123,9 @@ public class MedicaoFaseEntity implements Serializable {
         this.kwhUltimaConta = kwh_ultima_conta;
     }
 
+    @Override
+    public String toString(){
+        return "MedicaoFaseEntity:[kwh: "+this.kwh+"]";
+    }
 
 }

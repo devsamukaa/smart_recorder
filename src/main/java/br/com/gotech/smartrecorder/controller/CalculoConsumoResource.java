@@ -53,10 +53,11 @@ public class CalculoConsumoResource {
                     isMedicaoDispositivo
             );
 
-
             if(medicoesNoPeriodo.size() > 0) {
 
                 for (MedicaoFaseEntity medicaoFase : medicoesNoPeriodo) {
+                    System.out.println("MEDICAO_FASE " + medicaoFase.toString());
+                    System.out.println("BUSINESS_CONSUMO " + businessConsumo.toString());
                     businessConsumo.setKwh(this.IncrementaKwh(businessConsumo.getKwh(), medicaoFase.getKwh()));
                 }
 
