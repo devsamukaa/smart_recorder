@@ -40,31 +40,31 @@ public class CalculoConsumoResource {
         Calendar dataTerminoMedicao = Calendar.getInstance();
 
         if(isMedicaoDispositivo){
-
             dataInicioMedicao.setTime(DateHelper.parseDate(contaLuzEntity.getDataValidade().getDate()+"/"+mesAnterior+"/"+ano));
             dataTerminoMedicao.setTime(DateHelper.parseDate(contaLuzEntity.getDataValidade().getDate()+"/"+mes+"/"+ano));
 
             dataInicioMedicao.add(Calendar.DAY_OF_YEAR, -7);
             dataTerminoMedicao.add(Calendar.DAY_OF_YEAR, -7);
 
-            List<MedicaoFaseEntity> listMedicaoFaseEntity = medicaoFaseRepository.findByDataMedicaoBetweenAndInstalacao_CdInstalacaoAndIsMedicaoDispositivoOrderByDataMedicaoAsc(
+            List<MedicaoFaseEntity> medicoesNoPeriodo = medicaoFaseRepository.findByDataMedicaoBetweenAndInstalacao_CdInstalacaoAndIsMedicaoDispositivoOrderByDataMedicaoAsc(
                     dataInicioMedicao.getTime(),
                     dataTerminoMedicao.getTime(),
                     cdInstalacao,
                     isMedicaoDispositivo
             );
 
-            if(listMedicaoFaseEntity.size() > 0) {
-                MedicaoFaseEntity medicaoFaseEntity = listMedicaoFaseEntity.get(0);
-                if (medicaoFaseEntity == null)
-                    return businessConsumo;
 
-                businessConsumo.setKwh(medicaoFaseEntity.getKwhRelogio() - medicaoFaseEntity.getKwhUltimaConta());
+            if(medicoesNoPeriodo.size() > 0) {
+
+                for (MedicaoFaseEntity medicaoFase : medicoesNoPeriodo) {
+                    businessConsumo.setKwh(this.IncrementaKwh(businessConsumo.getKwh(), medicaoFase.getKwh()));
+                }
+
                 businessConsumo = this.calculaCustoEnergia(businessConsumo.getKwh(), cdInstalacao);
-
-            }else{
-                return businessConsumo;
             }
+
+            return businessConsumo;
+
         }else if(!isMedicaoDispositivo){
 
             dataInicioMedicao.setTime(DateHelper.parseDate("01/"+mes+"/"+ano));
@@ -91,6 +91,12 @@ public class CalculoConsumoResource {
             }
         }
         return businessConsumo;
+
+    }
+
+    public Double IncrementaKwh(Double kwhAtual, Double kwhNovo){
+
+        return kwhAtual + kwhNovo;
 
     }
 
