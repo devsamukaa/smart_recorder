@@ -49,31 +49,24 @@ public class CalculoConsumoResource {
                 dataInicioMedicao.add(Calendar.DAY_OF_YEAR, -7);
                 dataTerminoMedicao.add(Calendar.DAY_OF_YEAR, -7);
 
-                List<MedicaoFaseEntity> medicoesNoPeriodo = medicaoFaseRepository.findByDataMedicaoBetweenAndInstalacao_CdInstalacaoAndIsMedicaoDispositivoOrderByDataMedicaoAsc(
+                List<MedicaoFaseEntity> listMedicaoFaseEntity = medicaoFaseRepository.findByDataMedicaoBetweenAndInstalacao_CdInstalacaoAndIsMedicaoDispositivoOrderByDataMedicaoAsc(
                         dataInicioMedicao.getTime(),
                         dataTerminoMedicao.getTime(),
                         cdInstalacao,
                         isMedicaoDispositivo
                 );
 
-                int diaMedido = 100;
+                if(listMedicaoFaseEntity.size() > 0) {
+                    MedicaoFaseEntity medicaoFaseEntity = listMedicaoFaseEntity.get(0);
+                    if (medicaoFaseEntity == null)
+                        return businessConsumo;
 
-                if(medicoesNoPeriodo.size() > 0) {
+                    businessConsumo.setKwh(medicaoFaseEntity.getKwhRelogio() - medicaoFaseEntity.getKwhUltimaConta());
+                    businessConsumo = this.calculaCustoEnergia(businessConsumo.getKwh(), cdInstalacao);
 
-                    for (MedicaoFaseEntity medicaoFase : medicoesNoPeriodo) {
-
-                        if(diaMedido != medicaoFase.getDataMedicao().getDay()){
-                            diasMedidos++;
-                            diaMedido = medicaoFase.getDataMedicao().getDay();
-                        }
-
-                        businessConsumo.setKwh(this.IncrementaKwh(businessConsumo.getKwh(), medicaoFase.getKwh()));
-
-                    }
-
+                }else{
+                    return businessConsumo;
                 }
-
-                businessConsumo.setCustoTotal(this.calculaCustoEnergia(businessConsumo.getKwh(), cdInstalacao, diasMedidos));
 
             }catch (Exception e){
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Os parâmetros não foram passados adequadamente");
@@ -104,25 +97,6 @@ public class CalculoConsumoResource {
             }
         }
         return businessConsumo;
-
-    }
-
-    public Double IncrementaKwh(Double kwhAtual, Double kwhNovo){
-
-        return kwhAtual + kwhNovo;
-
-    }
-
-    /* Forma simplificada */
-    public Double calculaCustoEnergia(Double kwh, Long cdInstalacao, int diasMedidos){
-
-        ContaLuzEntity contaLuzEntity = contaLuzRepository.getByInstalacao_CdInstalacaoOrderByDataValidadeDesc(cdInstalacao);
-
-        Double valorDoKwh = (contaLuzEntity.getValorPago() - contaLuzEntity.getValorTributos()) / contaLuzEntity.getKwhConta();
-
-        Double tributoPorDia = (contaLuzEntity.getValorTributos()) / 30;
-
-        return Math.round( ((kwh * valorDoKwh) + (tributoPorDia * diasMedidos)) * 100.0 ) / 100.0 ;
 
     }
 
