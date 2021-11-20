@@ -31,6 +31,7 @@ public class CalculoConsumoResource {
     public BusinessConsumo calculoConsumoMensal(@RequestParam int mes, @RequestParam int ano, @RequestParam Long cdInstalacao, @RequestParam boolean isMedicaoDispositivo) {
 
         BusinessConsumo businessConsumo = new BusinessConsumo();
+        businessConsumo.setKwh(0.0);
         ContaLuzEntity contaLuzEntity = contaLuzRepository.getByInstalacao_CdInstalacaoOrderByDataValidadeDesc(cdInstalacao);
 
         mes = mes == 0 ? 1 : mes;
